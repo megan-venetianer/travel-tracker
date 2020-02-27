@@ -15,6 +15,7 @@ body {
   height: 100vh;
   margin: 0;
   padding: 0;
+  font-family: 'Catamaran';
 }
 
 header {
@@ -29,21 +30,46 @@ main {
   'left middle right';
   height: 100vh;
   width: 100%;
-  opacity: .7;
-}
-
-.login-form {
-  display: flex;
-  grid-area: middle;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5em;
-  background: white;
-  height: 70%;
+  opacity: .8;
 }
 
 input {
   font-size: 1em;
+}
+
+.login-form {
+  display: grid;
+  grid-area: middle;
+  width: 26em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 1.5em;
+  background: white;
+  height: 70%;
+  border: 3px solid black;
+}
+
+.left-section {
+  grid-area: left;
+  width: 37em;
+}
+
+button {
+  height: 1.5em;
+  width: 6em;
+  font-size: 1em;
+  font-family: 'Catamaran';
+  background: #4B6247;
+  color: white;
+}
+
+h1 {
+  font-size: 3em;
 }
 
 
