@@ -45,7 +45,9 @@ fetchAllData().then(data => {
 // event listeners
   $('.login-btn').click(validateUser);
 
-// variables
+// functions
+
+
 
 function validateUser() {
   $('.login').submit(e => {
@@ -53,8 +55,14 @@ function validateUser() {
   })
   let usernameInput = $('.username-input').val();
   let usernamePassword = $('.password-input').val();
+  let numberedTravelers = [];
+  for (let i = 0; i < 50; i++) {
+    numberedTravelers.push(`traveler${i + 1}`)
+  }
   if (usernameInput === 'agency' && usernamePassword === 'travel2020') {
   dom.hideContent('.login-form')
+} else if (numberedTravelers.includes(usernameInput) && usernamePassword === 'travel2020') {
+    dom.hideContent('.login-form')
   }
 }
 
