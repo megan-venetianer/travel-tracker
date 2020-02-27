@@ -1,0 +1,50 @@
+body {
+  // -webkit-font-smoothing: auto;
+  // background-color: $primary-bg-color;
+  display: grid;
+  // font-family: $primary-font-family;
+  grid-template-areas:
+    'header header header'
+    'left middle right'
+    'left middle right';
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  background: url('../images/mountains-lake.jpg');
+  background-size: cover;
+  // opacity: .7;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  grid-area: header;
+  text-align: center;
+}
+
+main {
+  display: grid;
+  grid-template-areas:
+  'left middle right'
+  'left middle right';
+  height: 100vh;
+  width: 100%;
+  opacity: .7;
+}
+
+.login-form {
+  display: flex;
+  grid-area: middle;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  background: white;
+  height: 70%;
+}
+
+input {
+  font-size: 1em;
+}
+
+
+//
