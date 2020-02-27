@@ -50,6 +50,7 @@ fetchAllData().then(data => {
 
 
 function validateUser() {
+  console.log(tripData)
   $('.login').submit(e => {
     e.preventDefault();
   })
