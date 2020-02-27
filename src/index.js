@@ -42,11 +42,21 @@ fetchAllData().then(data => {
 })
   .catch(error => console.log(error.message))
 
-  // function testFunction() {
-  //   console.log(destinationData[0].id)
-  // }
+// event listeners
+  $('.login-btn').click(validateUser);
 
-  $('.login-btn').on('click', dom.testFunction)
+// variables
+
+function validateUser() {
+  $('.login').submit(e => {
+    e.preventDefault();
+  })
+  let usernameInput = $('.username-input').val();
+  let usernamePassword = $('.password-input').val();
+  if (usernameInput === 'agency' && usernamePassword === 'travel2020') {
+  dom.hideContent('.login-form')
+  }
+}
 
 export default fetchAllData;
 
