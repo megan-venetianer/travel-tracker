@@ -15,6 +15,7 @@ body {
   height: 100vh;
   margin: 0;
   padding: 0;
+  font-family: 'Catamaran';
 }
 
 header {
@@ -32,18 +33,43 @@ main {
   opacity: .7;
 }
 
+input {
+  font-size: 1em;
+}
+
 .login-form {
-  display: flex;
+  display: grid;
   grid-area: middle;
+  width: 26em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   font-size: 1.5em;
   background: white;
   height: 70%;
+  border: 3px solid black;
 }
 
-input {
+.left-section {
+  grid-area: left;
+  width: 37em;
+}
+
+button {
+  height: 1.5em;
+  width: 6em;
   font-size: 1em;
+  font-family: 'Catamaran';
+  background: #4B6247;
+  color: white;
+}
+
+h1 {
+  font-size: 3em;
 }
 
 
