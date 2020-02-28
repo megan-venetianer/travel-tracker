@@ -14,7 +14,6 @@ class User {
   }
 
   findPastTrips(travelerId, tripsData) {
-    // let travelerAllTrips = [];
     let travelerPastTrips = [];
     let travelersTrips = tripsData.filter(trip => {
       return travelerId === trip.userID
@@ -30,8 +29,20 @@ class User {
     return travelerPastTrips;
   }
 
-  findUpcomingTrips(traveler) {
-
+  findUpcomingTrips(travelerId, tripsData) {
+    let travelerUpcomingTrips = [];
+    let travelersTrips = tripsData.filter(trip => {
+      return travelerId === trip.userID
+    })
+    travelersTrips.forEach(trip => {
+      let travelersDates = trip.date.split('').filter(number => {
+        return number !== '/'
+      }).join('')
+      if (moment(travelersDates, "YYYYMMDD").fromNow().includes('in')) {
+        travelerUpcomingTrips.push(trip)
+      }
+    })
+    return travelerUpcomingTrips;
   }
 
   findPresentTrips(travelerId, tripData) {

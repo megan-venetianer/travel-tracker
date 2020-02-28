@@ -51,7 +51,7 @@ let tripsData = [
   },
   {
   "id": 6,
-  "userID": 29,
+  "userID": 43,
   "destinationID": 35,
   "travelers": 3,
   "date": "2020/06/29",
@@ -101,7 +101,7 @@ let tripsData = [
   },
   {
   "id": 11,
-  "userID": 50,
+  "userID": 43,
   "destinationID": 5,
   "travelers": 4,
   "date": "2020/10/14",

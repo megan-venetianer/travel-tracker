@@ -65,10 +65,33 @@ describe('User', function() {
     "suggestedActivities": []
     }
     ])
-  })
+  });
 
-})
+  it('should find a traveler\'s past trips', function() {
+    expect(user.findUpcomingTrips(43, tripsData)).to.eql(
+      [{
+        "id": 6,
+        "userID": 43,
+        "destinationID": 35,
+        "travelers": 3,
+        "date": "2020/06/29",
+        "duration": 9,
+        "status": "approved",
+        "suggestedActivities": []
+      },
+      {
+      "id": 11,
+      "userID": 43,
+      "destinationID": 5,
+      "travelers": 4,
+      "date": "2020/10/14",
+      "duration": 4,
+      "status": "approved",
+      "suggestedActivities": []
+    }
+    ])
+  });
 
-
+});
 
 //
