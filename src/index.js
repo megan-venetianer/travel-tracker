@@ -47,8 +47,6 @@ fetchAllData().then(data => {
 
 // functions
 
-
-
 function validateUser() {
   console.log(tripData)
   $('.login').submit(e => {
@@ -62,7 +60,7 @@ function validateUser() {
   }
   if (usernameInput === 'agency' && usernamePassword === 'travel2020') {
   dom.hideContent('.login-form')
-} else if (numberedTravelers.includes(usernameInput) && usernamePassword === 'travel2020') {
+  } else if (numberedTravelers.includes(usernameInput) && usernamePassword === 'travel2020') {
     dom.hideContent('.login-form')
   }
 }
