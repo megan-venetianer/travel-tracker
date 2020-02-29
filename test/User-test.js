@@ -93,9 +93,24 @@ describe('User', function() {
     ])
   });
 
-  it('should calculate how much a traveler has spent on trips in this calendar year', function() {
-    expect(user.findAmountSpent())
-  })
+  it('should be able to find a traveler\'s present trips', function() {
+    expect(user.findPresentTrips(37, tripsData)).to.eql(
+      {
+      "id": 7,
+      "userID": 37,
+      "destinationID": 17,
+      "travelers": 5,
+      "date": "2020/02/28",
+      "duration": 20,
+      "status": "approved",
+      "suggestedActivities": []
+    }
+    )
+  });
+
+  // it('should calculate how much a traveler has spent on trips in this calendar year', function() {
+  //   expect(user.findAmountSpent())
+  // })
 
 });
 

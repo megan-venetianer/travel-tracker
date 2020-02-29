@@ -40,7 +40,16 @@ class User {
   }
 
   findPresentTrips(travelerId, tripData) {
-
+    let travelersTrips = tripData.filter(trip => {
+      return travelerId === trip.userID;
+    })
+    let presentTrip = travelersTrips.filter(trip => {
+      let startDate = new Date(trip.date);
+      let endDate = new Date(moment().add(trip.duration, 'days').calendar());
+      let today = new Date();
+      return startDate < today && today < endDate
+    })
+    return presentTrip.pop();
   }
 
   findAmountSpent(travelerId, tripData, destinationData) {
