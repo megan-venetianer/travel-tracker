@@ -36,6 +36,7 @@ let travelerData;
 let destinationData;
 let tripData;
 let traveler;
+let travelAgent;
 
 fetchAllData().then(data => {
   travelerData = data.travelerData;
@@ -60,14 +61,19 @@ function validateUser() {
     numberedTravelers.push(`traveler${i + 1}`)
   }
   if (usernameInput === 'agency' && usernamePassword === 'travel2020') {
-  dom.hideContent('.login-form')
+    dom.hideContent('.login-form');
+    travelAgent = new travelAgent();
   } else if (numberedTravelers.includes(usernameInput) && usernamePassword === 'travel2020') {
     dom.hideContent('.login-form');
       if (usernameInput.length === 10) {
         let travelerNumber = parseInt(usernameInput.split('').splice(8, 2).join(''))
         traveler = new Traveler(travelerData[`${travelerNumber - 1}`])
+      } else {
+        let userNumber = parseInt(usernameInput.split('').splice(8, 1).join(''))
+        traveler = new Traveler(travelerData[`${userNumber - 1}`])
       }
     };
+    console.log(traveler)
     return traveler;
   }
 
