@@ -108,7 +108,17 @@ let tripsData = [
   "duration": 4,
   "status": "approved",
   "suggestedActivities": []
-  }
+  },
+  {
+  "id": 12,
+  "userID": 2,
+  "destinationID": 48,
+  "travelers": 5,
+  "date": "2020/06/23",
+  "duration": 15,
+  "status": "pending",
+  "suggestedActivities": []
+  },
 ]
 
 export default tripsData;

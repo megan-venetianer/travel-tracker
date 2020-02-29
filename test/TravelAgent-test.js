@@ -29,4 +29,41 @@ describe('TravelAgent', function() {
     expect(travelAgent.id).to.equal(3)
   })
 
+  it('should be able to find a traveler\'s trip requests', function() {
+    // travelAgent.findUser('Rachael Vaughten', destinationData);
+    expect(travelAgent.findTripRequests(tripsData)).to.eql(
+      [
+      {
+      "id": 2,
+      "userID": 35,
+      "destinationID": 25,
+      "travelers": 5,
+      "date": "2020/10/04",
+      "duration": 18,
+      "status": "pending",
+      "suggestedActivities": []
+      },
+      {
+      "id": 3,
+      "userID": 35,
+      "destinationID": 22,
+      "travelers": 4,
+      "date": "2020/05/22",
+      "duration": 17,
+      "status": "pending",
+      "suggestedActivities": []
+      },
+      {
+      "id": 12,
+      "userID": 2,
+      "destinationID": 48,
+      "travelers": 5,
+      "date": "2020/06/23",
+      "duration": 15,
+      "status": "pending",
+      "suggestedActivities": []
+    }]
+    )
+  })
+
 });
