@@ -20,7 +20,11 @@ body {
 
 header {
   grid-area: header;
-  text-align: center;
+  margin-left: 2em;
+  display: flex;
+  // text-align: left;
+  // background: white;
+  // opacity: .7;
 }
 
 main {
@@ -59,6 +63,7 @@ form {
 .left-section {
   grid-area: left;
   width: 37em;
+  margin-left: 2em;
 }
 
 button {
@@ -75,7 +80,16 @@ button {
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 2em;
+  align-content: left;
+}
+
+.welcome-msg {
+  display: flex;
+  padding-left: 13.5em;
+  font-size: 1.5em;
+  // align-content: center;
+  // justify-content: center;
 }
 
 
