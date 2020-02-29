@@ -7,8 +7,12 @@ class TravelAgent extends User {
   }
 
   // should return user object by passing in the user's name. this function will return the id of the user and set it to this.id
-  findUser() {
-
+  findUser(travelerName, travelerData) {
+    let travelerInfo = travelerData.filter(traveler => {
+      return travelerName === traveler.name;
+    })
+    this.id = travelerInfo[0].id;
+    return travelerInfo[0].id
   }
 
   findTripRequests() {
