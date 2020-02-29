@@ -35,6 +35,7 @@ main {
 
 input {
   font-size: 1em;
+  border: 2px solid black;
 }
 
 .login-form {
@@ -52,6 +53,7 @@ form {
   background: white;
   height: 70%;
   border: 3px solid black;
+  border-radius: 30px;
 }
 
 .left-section {
@@ -60,12 +62,16 @@ form {
 }
 
 button {
-  height: 1.5em;
+  height: 1.8em;
   width: 6em;
   font-size: 1em;
   font-family: 'Catamaran';
   background: #4B6247;
   color: white;
+  border-radius: 10px;
+  &:hover {
+    background: #0F5672;
+  }
 }
 
 h1 {
