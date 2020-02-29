@@ -1,6 +1,7 @@
 import chai, { expect } from 'chai';
 import User from '../src/User';
 import tripsData from '../data/sampleTripsData';
+import destinationData from '../data/sampleDestinationData';
 
 describe('User', function() {
   let user;
@@ -67,7 +68,7 @@ describe('User', function() {
     ])
   });
 
-  it('should find a traveler\'s past trips', function() {
+  it('should find a traveler\'s upcoming trips', function() {
     expect(user.findUpcomingTrips(43, tripsData)).to.eql(
       [{
         "id": 6,
@@ -91,6 +92,10 @@ describe('User', function() {
     }
     ])
   });
+
+  it('should calculate how much a traveler has spent on trips in this calendar year', function() {
+    expect(user.findAmountSpent())
+  })
 
 });
 

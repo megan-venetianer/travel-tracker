@@ -19,10 +19,7 @@ class User {
       return travelerId === trip.userID
     })
     travelersTrips.forEach(trip => {
-      let travelersDates = trip.date.split('').filter(number => {
-        return number !== '/'
-      }).join('')
-      if (moment(travelersDates, "YYYYMMDD").fromNow().includes('ago')) {
+      if (moment(trip.date, "YYYY/MM/DD").fromNow().includes('ago')) {
         travelerPastTrips.push(trip)
       }
     })
@@ -35,10 +32,7 @@ class User {
       return travelerId === trip.userID
     })
     travelersTrips.forEach(trip => {
-      let travelersDates = trip.date.split('').filter(number => {
-        return number !== '/'
-      }).join('')
-      if (moment(travelersDates, "YYYYMMDD").fromNow().includes('in')) {
+      if (moment(trip.date, "YYYY/MM/DD").fromNow().includes('in')) {
         travelerUpcomingTrips.push(trip)
       }
     })
@@ -49,7 +43,7 @@ class User {
 
   }
 
-  findAmountSpent(traveler) {
+  findAmountSpent(travelerId, tripData, destinationData) {
 
   }
 }

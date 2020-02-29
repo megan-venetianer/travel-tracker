@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import dom from './domUpdates';
+import Traveler from './Traveler';
 
 // ---------- css ----------
 import './css/base.scss';
@@ -34,6 +35,7 @@ function fetchAllData() {
 let travelerData;
 let destinationData;
 let tripData;
+let traveler;
 
 fetchAllData().then(data => {
   travelerData = data.travelerData;
@@ -48,7 +50,6 @@ fetchAllData().then(data => {
 // functions
 
 function validateUser() {
-  console.log(tripData)
   $('.login').submit(e => {
     e.preventDefault();
   })
@@ -61,9 +62,15 @@ function validateUser() {
   if (usernameInput === 'agency' && usernamePassword === 'travel2020') {
   dom.hideContent('.login-form')
   } else if (numberedTravelers.includes(usernameInput) && usernamePassword === 'travel2020') {
-    dom.hideContent('.login-form')
+    dom.hideContent('.login-form');
+      if (usernameInput.length === 10) {
+        let travelerNumber = parseInt(usernameInput.split('').splice(8, 2).join(''))
+        traveler = new Traveler(travelerData[`${travelerNumber - 1}`])
+      }
+    };
+    return traveler;
   }
-}
+
 
 export default fetchAllData;
 
