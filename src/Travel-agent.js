@@ -37,7 +37,7 @@ class TravelAgent extends User {
       })
       return tripDetails;
     }, 0)
-    return Math.round(yearlyCost * 1.1);
+    return Math.round(yearlyCost * .1);
   }
 
   // number of travelers on today's date

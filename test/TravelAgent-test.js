@@ -67,7 +67,7 @@ describe('TravelAgent', function() {
   });
 
   it('should calculate the travel agent\'s total income this calendar year', function() {
-    expect(travelAgent.getYearlyIncome(tripsData, destinationData)).to.equal(48829)
+    expect(travelAgent.getYearlyIncome(tripsData, destinationData)).to.equal(4439)
   });
 
 });
