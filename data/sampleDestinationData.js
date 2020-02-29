@@ -24,12 +24,20 @@ let destinationData = [
     "alt": "opera house and city buildings on the water with boats"
   },
   {
-    "id": 5,
+    "id": 4,
     "destination": "Madrid, Spain",
     "estimatedLodgingCostPerDay": 150,
     "estimatedFlightCostPerPerson": 650,
     "image": "https://images.unsplash.com/photo-1543785734-4b6e564642f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
     "alt": "city with clear skys and a road in the day time"
+  },
+  {
+    "id": 5,
+    "destination": "Paris, France",
+    "estimatedLodgingCostPerDay": 100,
+    "estimatedFlightCostPerPerson": 395,
+    "image": "https://images.unsplash.com/photo-1524396309943-e03f5249f002?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80",
+    "alt": "city during the day time with eiffel tower"
   },
   {
     "id": 6,
@@ -87,3 +95,5 @@ let destinationData = [
     "alt": "overview of city with buildings, water and trees"
   }
 ]
+
+export default destinationData;

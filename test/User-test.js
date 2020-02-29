@@ -73,7 +73,7 @@ describe('User', function() {
       [{
         "id": 6,
         "userID": 43,
-        "destinationID": 35,
+        "destinationID": 3,
         "travelers": 3,
         "date": "2020/06/29",
         "duration": 9,
@@ -108,9 +108,9 @@ describe('User', function() {
     )
   });
 
-  // it('should calculate how much a traveler has spent on trips in this calendar year', function() {
-  //   expect(user.findAmountSpent())
-  // })
+  it('should calculate how much a traveler has spent on trips in this calendar year', function() {
+    expect(user.findAmountSpent(43, tripsData, destinationData)).to.equal(9680)
+  });
 
 });
 

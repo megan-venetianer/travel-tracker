@@ -52,8 +52,28 @@ class User {
     return presentTrip.pop();
   }
 
+  // include the 10% travel agent fee
   findAmountSpent(travelerId, tripData, destinationData) {
-
+    let yearsTrips = [];
+    let travelersTrips = tripData.filter(trip => {
+      return travelerId === trip.userID;
+    })
+    travelersTrips.forEach(trip => {
+      let thisYearsTrips = trip.date.split('');
+      if (thisYearsTrips[3] === '0') {
+        yearsTrips.push(trip)
+      }
+    })
+    let yearlyCost = yearsTrips.reduce((tripDetails, trip) => {
+      console.log(trip)
+      destinationData.forEach(destination => {
+        if (destination.id === trip.destinationID) {
+          tripDetails = tripDetails + trip.travelers * destination.estimatedFlightCostPerPerson + trip.duration * destination.estimatedLodgingCostPerDay
+        }
+      })
+      return tripDetails;
+    }, 0)
+    return yearlyCost * 1.1;
   }
 }
 
