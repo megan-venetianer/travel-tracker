@@ -70,4 +70,8 @@ describe('TravelAgent', function() {
     expect(travelAgent.getYearlyIncome(tripsData, destinationData)).to.equal(4439)
   });
 
+  it('should be able to find the number of traveler\'s traveling today', function() {
+    expect(travelAgent.getTodaysTravelers(tripsData)).to.equal(7)
+  })
+
 });

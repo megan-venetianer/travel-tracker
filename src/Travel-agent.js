@@ -1,4 +1,5 @@
 import User from './User';
+var moment = require('moment');
 
 class TravelAgent extends User {
   constructor() {
@@ -41,8 +42,20 @@ class TravelAgent extends User {
   }
 
   // number of travelers on today's date
-  getTodaysTravelers() {
-
+  getTodaysTravelers(tripsData) {
+    let currentTrips = [];
+    tripsData.filter(trip => {
+      let startDate = new Date(trip.date);
+      let endDate = new Date(moment(startDate).add(trip.duration, 'days'));
+      let today = new Date();
+      if (startDate < today && today < endDate) {
+        currentTrips.push(trip);
+      }
+    })
+    return currentTrips.reduce((tripInfo, trip) => {
+      tripInfo += trip.travelers;
+      return tripInfo;
+    }, 0)
   }
 
   // will require a POST request, changing the trip status to approved
