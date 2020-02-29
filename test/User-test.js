@@ -4,10 +4,16 @@ import tripsData from '../data/sampleTripsData';
 import destinationData from '../data/sampleDestinationData';
 
 describe('User', function() {
-  let user;
+  let user1;
+  let user2;
+  let user3;
+  let user4;
 
   beforeEach(function() {
-    user = new User()
+    user1 = new User(35);
+    user2 = new User(44);
+    user3 = new User(43);
+    user4 = new User(37);
   });
 
   it('should be a function', function() {
@@ -15,12 +21,12 @@ describe('User', function() {
   });
 
   it('should be an instance of user', function() {
-    expect(user).to.be.an.instanceof(User);
+    expect(user1).to.be.an.instanceof(User);
   });
 
   it('should be able to get a user\'s pending trips', function() {
-    user.findPendingTrips(35, tripsData)
-    expect(user.pendingTrips).to.eql(
+    user1.findPendingTrips(tripsData)
+    expect(user1.pendingTrips).to.eql(
     [{
     "id": 2,
     "userID": 35,
@@ -44,7 +50,7 @@ describe('User', function() {
   });
 
   it('should find a traveler\'s past trips', function() {
-    expect(user.findPastTrips(44, tripsData)).to.eql(
+    expect(user2.findPastTrips(tripsData)).to.eql(
       [{
       "id": 1,
       "userID": 44,
@@ -69,7 +75,7 @@ describe('User', function() {
   });
 
   it('should find a traveler\'s upcoming trips', function() {
-    expect(user.findUpcomingTrips(43, tripsData)).to.eql(
+    expect(user3.findUpcomingTrips(tripsData)).to.eql(
       [{
         "id": 6,
         "userID": 43,
@@ -94,7 +100,7 @@ describe('User', function() {
   });
 
   it('should be able to find a traveler\'s present trips', function() {
-    expect(user.findPresentTrips(37, tripsData)).to.eql(
+    expect(user4.findPresentTrips(tripsData)).to.eql(
       {
       "id": 7,
       "userID": 37,
@@ -109,7 +115,7 @@ describe('User', function() {
   });
 
   it('should calculate how much a traveler has spent on trips in this calendar year', function() {
-    expect(user.findAmountSpent(43, tripsData, destinationData)).to.equal(9680)
+    expect(user3.findAmountSpent(tripsData, destinationData)).to.equal(9680)
   });
 
 });

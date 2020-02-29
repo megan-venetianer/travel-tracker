@@ -1,22 +1,23 @@
 var moment = require('moment');
 
 class User {
-  constructor() {
+  constructor(id) {
+    this.id = id;
     this.pendingTrips = [];
   }
 
-  findPendingTrips(travelerId, tripsData) {
+  findPendingTrips(tripsData) {
     tripsData.forEach(trip => {
-      if (travelerId === trip.userID && trip.status === 'pending') {
+      if (this.id === trip.userID && trip.status === 'pending') {
         this.pendingTrips.push(trip)
       }
     })
   }
 
-  findPastTrips(travelerId, tripsData) {
+  findPastTrips(tripsData) {
     let travelerPastTrips = [];
     let travelersTrips = tripsData.filter(trip => {
-      return travelerId === trip.userID
+      return this.id === trip.userID
     })
     travelersTrips.forEach(trip => {
       if (moment(trip.date, "YYYY/MM/DD").fromNow().includes('ago')) {
@@ -26,10 +27,10 @@ class User {
     return travelerPastTrips;
   }
 
-  findUpcomingTrips(travelerId, tripsData) {
+  findUpcomingTrips(tripsData) {
     let travelerUpcomingTrips = [];
     let travelersTrips = tripsData.filter(trip => {
-      return travelerId === trip.userID
+      return this.id === trip.userID
     })
     travelersTrips.forEach(trip => {
       if (moment(trip.date, "YYYY/MM/DD").fromNow().includes('in')) {
@@ -39,9 +40,9 @@ class User {
     return travelerUpcomingTrips;
   }
 
-  findPresentTrips(travelerId, tripData) {
+  findPresentTrips(tripData) {
     let travelersTrips = tripData.filter(trip => {
-      return travelerId === trip.userID;
+      return this.id === trip.userID;
     })
     let presentTrip = travelersTrips.filter(trip => {
       let startDate = new Date(trip.date);
@@ -52,11 +53,11 @@ class User {
     return presentTrip.pop();
   }
 
-  // include the 10% travel agent fee
-  findAmountSpent(travelerId, tripData, destinationData) {
+  // need to add on functionality to check if it is an approved trip
+  findAmountSpent(tripData, destinationData) {
     let yearsTrips = [];
     let travelersTrips = tripData.filter(trip => {
-      return travelerId === trip.userID;
+      return this.id === trip.userID;
     })
     travelersTrips.forEach(trip => {
       let thisYearsTrips = trip.date.split('');
@@ -65,10 +66,9 @@ class User {
       }
     })
     let yearlyCost = yearsTrips.reduce((tripDetails, trip) => {
-      console.log(trip)
       destinationData.forEach(destination => {
         if (destination.id === trip.destinationID) {
-          tripDetails = tripDetails + trip.travelers * destination.estimatedFlightCostPerPerson + trip.duration * destination.estimatedLodgingCostPerDay
+          tripDetails += trip.travelers * destination.estimatedFlightCostPerPerson + trip.duration * destination.estimatedLodgingCostPerDay
         }
       })
       return tripDetails;
@@ -76,6 +76,5 @@ class User {
     return yearlyCost * 1.1;
   }
 }
-
 
 export default User;

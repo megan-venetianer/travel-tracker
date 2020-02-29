@@ -72,8 +72,9 @@ function validateUser() {
         let userNumber = parseInt(usernameInput.split('').splice(8, 1).join(''))
         traveler = new Traveler(travelerData[`${userNumber - 1}`])
       }
+      console.log(traveler)
     };
-    console.log(traveler)
+
     return traveler;
   }
 
