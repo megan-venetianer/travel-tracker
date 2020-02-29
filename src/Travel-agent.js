@@ -12,7 +12,7 @@ class TravelAgent extends User {
       return travelerName === traveler.name;
     })
     this.id = travelerInfo[0].id;
-    return travelerInfo[0].id
+    return travelerInfo[0];
   }
 
   findTripRequests(tripsData) {
