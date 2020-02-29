@@ -93,6 +93,30 @@ let destinationData = [
     "estimatedFlightCostPerPerson": 1200,
     "image": "https://images.unsplash.com/photo-1442483221814-59f7d8b22739?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
     "alt": "overview of city with buildings, water and trees"
+  },
+  {
+    "id": 29,
+    "destination": "Willemstad, Curaçao",
+    "estimatedLodgingCostPerDay": 80,
+    "estimatedFlightCostPerPerson": 1100,
+    "image": "https://images.unsplash.com/photo-1541748603027-cbfefa3a6c8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1952&q=80",
+    "alt": "brightly colored buildings near body of water"
+  },
+  {
+    "id": 17,
+    "destination": "Jaipur, India",
+    "estimatedLodgingCostPerDay": 30,
+    "estimatedFlightCostPerPerson": 1200,
+    "image": "https://images.unsplash.com/photo-1534758607507-754e582adfa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+    "alt": "a courtyard with trees and mountain in the distance"
+  },
+  {
+    "id": 50,
+    "destination": "Hobart, Tasmania",
+    "estimatedLodgingCostPerDay": 1400,
+    "estimatedFlightCostPerPerson": 75,
+    "image": "https://images.unsplash.com/photo-1506982724953-b1fbe939e1e3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
+    "alt": "person sitting on brown rock in front of body of water"
   }
 ]
 

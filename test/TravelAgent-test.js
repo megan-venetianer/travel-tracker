@@ -4,6 +4,7 @@ import Traveler from '../src/Traveler';
 import TravelAgent from '../src/Travel-agent'
 import travelerData from '../data/sampleTravelerData';
 import tripsData from '../data/sampleTripsData';
+import destinationData from '../data/sampledestinationData';
 
 describe('TravelAgent', function() {
   let travelAgent;
@@ -30,7 +31,6 @@ describe('TravelAgent', function() {
   })
 
   it('should be able to find a traveler\'s trip requests', function() {
-    // travelAgent.findUser('Rachael Vaughten', destinationData);
     expect(travelAgent.findTripRequests(tripsData)).to.eql(
       [
       {
@@ -64,6 +64,10 @@ describe('TravelAgent', function() {
       "suggestedActivities": []
     }]
     )
-  })
+  });
+
+  it('should calculate the travel agent\'s total income this calendar year', function() {
+    expect(travelAgent.getYearlyIncome(tripsData, destinationData)).to.equal(48829)
+  });
 
 });
