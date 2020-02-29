@@ -46,9 +46,11 @@ class User {
     })
     let presentTrip = travelersTrips.filter(trip => {
       let startDate = new Date(trip.date);
-      let endDate = new Date(moment().add(trip.duration, 'days').calendar());
+      let endDate = new Date(moment().add(trip.duration, 'days'));
       let today = new Date();
-      return startDate < today && today < endDate
+      if (startDate < today && today < endDate) {
+        return trip;
+      }
     })
     return presentTrip.pop();
   }
