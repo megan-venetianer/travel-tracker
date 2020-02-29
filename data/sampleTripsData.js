@@ -91,7 +91,7 @@ let tripsData = [
   },
   {
   "id": 10,
-  "userID": 9,
+  "userID": 2,
   "destinationID": 50,
   "travelers": 6,
   "date": "2020/07/23",

@@ -3,10 +3,10 @@ import User from './User';
 class TravelAgent extends User {
   constructor() {
     super();
-    this.id = 1;
+    this.id;
   }
 
-  // should return user object by passing in the user's name
+  // should return user object by passing in the user's name. this function will return the id of the user and set it to this.id
   findUser() {
 
   }
