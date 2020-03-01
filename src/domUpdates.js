@@ -6,9 +6,41 @@ const dom = {
     $(content).hide()
   },
 
+  renderAgentDashboard: (travelAgent, tripData, destinationData) => {
+    $('.welcome-msg').html(`<h2>Welcome, Agent!</h2>`);
+    dom.renderAgentIncome(travelAgent, tripData, destinationData);
+    dom.renderTodaysTravelers(travelAgent, tripData);
+    dom.renderAllPendingTrips(travelAgent, tripData, destinationData)
+  },
+
+  renderAgentIncome: (travelAgent, tripData, destinationData) => {
+    let amountSpent = travelAgent.getYearlyIncome(tripData, destinationData);
+    $('.monetary-display').html(`<h2>You have made $${amountSpent} in income this year!</h2>`);
+  },
+
+  renderAllPendingTrips: (travelAgent, tripData, destinationData) => {
+    let pendingTrips = travelAgent.findTripRequests(tripData);
+    console.log(travelAgent.findTripRequests(tripData))
+    pendingTrips.forEach(trip => {
+      let tripDestination = destinationData.find(destination => {
+        return destination.id === trip.destinationID;
+      })
+      let html = `<div class ="trip-request-cards">
+        <h4>${tripDestination.destination}</h4>
+        <p>Departure Date: ${trip.date}</p>
+        <p>Duration: ${trip.duration} days</p>
+        <img src=${tripDestination.image}
+             alt="${tripDestination.destination}"
+             title="${tripDestination.destination}">
+        <button class="approve-trip-btn">Approve</button>
+      </div>`;
+      $('.trip-requests-all').append(html)
+    })
+  },
+
   renderAmountSpent: (traveler, tripData, destinationData) => {
     let amountSpent = traveler.findAmountSpent(tripData, destinationData);
-    $('.amount-spent').html(`<h2>You spent $${amountSpent} on traveling this year!</h2>`);
+    $('.monetary-display').html(`<h2>You spent $${amountSpent} on traveling this year!</h2>`);
   },
 
   renderCurrentTrip: (traveler, tripData, destinationData) => {
@@ -69,6 +101,11 @@ const dom = {
     })
   },
 
+  renderTodaysTravelers: (travelAgent, tripData) => {
+    let travelersToday = travelAgent.getTodaysTravelers(tripData);
+    $('.todays-travelers').html(`<h3>There are ${travelersToday} people traveling today!`)
+  },
+
   renderTravelerDashboard: (username, traveler, tripData, destinationData) => {
     $('.welcome-msg').html(`<h2>Welcome, ${username}!</h2>`);
     dom.renderUpcomingTrips(traveler, tripData, destinationData);
@@ -101,15 +138,6 @@ const dom = {
     $(content).removeClass('hidden')
   },
 
-  renderAgentDashboard: (travelAgent, tripData, destinationData) => {
-    $('.welcome-msg').html(`<h2>Welcome, Agent!</h2>`);
-    dom.renderAgentIncome(travelAgent, tripData, destinationData);
-  },
-
-  renderAgentIncome: (travelAgent, tripData, destinationData) => {
-    let amountSpent = travelAgent.getYearlyIncome(tripData, destinationData);
-    $('.amount-spent').html(`<h2>You have made $${amountSpent} in income this year!</h2>`);
-  },
 };
 
 

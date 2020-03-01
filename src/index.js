@@ -66,6 +66,7 @@ function validateUser() {
   if (usernameInput === 'agency' && usernamePassword === 'travel2020') {
     travelAgent = new TravelAgent();
     dom.hideContent('.login-form');
+    dom.unhideContent('.todays-travelers')
     dom.renderAgentDashboard(travelAgent, tripData, destinationData);
   } else if (numberedTravelers.includes(usernameInput) && usernamePassword === 'travel2020') {
     dom.hideContent('.login-form');
