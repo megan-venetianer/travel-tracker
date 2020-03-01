@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import dom from './domUpdates';
 import Traveler from './Traveler';
+import TravelAgent from './Travel-agent';
+import User from './User';
 
 // ---------- css ----------
 import './css/base.scss';
@@ -50,19 +52,22 @@ fetchAllData().then(data => {
 
 // functions
 
+let numberedTravelers = [];
+for (let i = 0; i < 50; i++) {
+  numberedTravelers.push(`traveler${i + 1}`)
+}
+
 function validateUser() {
   $('.login').submit(e => {
     e.preventDefault();
   })
   let usernameInput = $('.username-input').val();
   let usernamePassword = $('.password-input').val();
-  let numberedTravelers = [];
-  for (let i = 0; i < 50; i++) {
-    numberedTravelers.push(`traveler${i + 1}`)
-  }
   if (usernameInput === 'agency' && usernamePassword === 'travel2020') {
+    travelAgent = new TravelAgent();
     dom.hideContent('.login-form');
-    travelAgent = new travelAgent();
+    dom.unhideContent('.todays-travelers')
+    dom.renderAgentDashboard(travelAgent, tripData, destinationData);
   } else if (numberedTravelers.includes(usernameInput) && usernamePassword === 'travel2020') {
     dom.hideContent('.login-form');
       if (usernameInput.length === 10) {
@@ -72,9 +77,12 @@ function validateUser() {
         let userNumber = parseInt(usernameInput.split('').splice(8, 1).join(''))
         traveler = new Traveler(travelerData[`${userNumber - 1}`])
       }
-      console.log(traveler)
+      dom.renderTravelerDashboard(traveler.name, traveler, tripData, destinationData);
+      dom.unhideContent('.upcoming-trips');
+      dom.unhideContent('.past-trips');
+      dom.unhideContent('.pending-trips');
+      dom.unhideContent('.left-section')
     };
-
     return traveler;
   }
 

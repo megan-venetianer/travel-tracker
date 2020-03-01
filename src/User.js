@@ -3,17 +3,19 @@ var moment = require('moment');
 class User {
   constructor(id) {
     this.id = id;
-    this.pendingTrips = [];
   }
 
   findPendingTrips(tripsData) {
+    let pendingTrips = [];
     tripsData.forEach(trip => {
       if (this.id === trip.userID && trip.status === 'pending') {
-        this.pendingTrips.push(trip)
+        pendingTrips.push(trip)
       }
     })
+    return pendingTrips;
   }
 
+  // need to revisit this method since it includes current trips as well
   findPastTrips(tripsData) {
     let travelerPastTrips = [];
     let travelersTrips = tripsData.filter(trip => {
@@ -33,7 +35,7 @@ class User {
       return this.id === trip.userID
     })
     travelersTrips.forEach(trip => {
-      if (moment(trip.date, "YYYY/MM/DD").fromNow().includes('in')) {
+      if (moment(trip.date, "YYYY/MM/DD").fromNow().includes('in') && trip.status === 'approved') {
         travelerUpcomingTrips.push(trip)
       }
     })
@@ -52,7 +54,7 @@ class User {
         return trip;
       }
     })
-    return presentTrip.pop();
+      return presentTrip.pop();
   }
 
   // need to add on functionality to check if it is an approved trip
@@ -75,7 +77,7 @@ class User {
       })
       return tripDetails;
     }, 0)
-    return yearlyCost * 1.1;
+    return Math.round(yearlyCost * 1.1);
   }
 }
 

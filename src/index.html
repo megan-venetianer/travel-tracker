@@ -9,17 +9,76 @@
   </head>
   <body>
     <header>
-      <h1>MEG'S TRAVEL TRACKER</h1>
+      <h1>TRAVEL TRACKER</h1>
+      <section class="welcome-msg">
+      </section>
+      <section class="monetary-display">
+      </section>
+      <section class="current-trip">
+      </section>
     </header>
     <main class="main-page">
-      <section class="left-section">
-      
+      <section class="left-section hidden">
+        <form id="book-trip-form"
+            role="search">
+            <h3>Book a Trip!</h3>
+            <label for="date-picker">
+              Departure Date
+            </label>
+        <input id="trip-date"
+               type="date"
+               autocomplete="off"></input>
+             <label for="destination-input">
+               Destination
+             </label>
+             <select class="destination-dropdown"
+                     name="">
+             </select>
+             <label for="number-days">
+               Number of Days
+             </label>
+        <input id="number-days-input"
+              type="number"
+              autocomplete="off"></input>
+            <label for="number-days">
+              Number of Travelers
+            </label>
+      <input id="number-travelers-input"
+             type="number"
+             autocomplete="off"></input>
+        <button class="button book-trip-btn"
+                type="button"
+                name="button"
+                aria-label="Submit trip request"
+                aria-controls="search-input">
+          Submit
+        </button>
+      </form>
       </section>
-      <section class="login-form">
+      <section class="upcoming-trips hidden">
+        <h3>Upcoming Trips</h3>
+      </section>
+      <section class="agent-form ">
+        <form id="agent-search">
+          <h3>Agent Dashboard</h3>
+          <label for="traveler-search">
+            Search by Traveler
+          </label>
+          <input id="traveler-input"
+                 type="text"
+          </input>
+        </form>
+      <section class="todays-travelers hidden">
+      </section>
+      </section>
+      <section class="trip-requests-all">
+        <h3>Pending Trip Requests</h3>
+      </section>
+      <section class="login-form ">
         <form id="login"
           class="login"
           role="login">
-          <h2>Welcome!</h2>
+          <h2>Login Below</h2>
           <label for="login-username">
             Username
           </label>
@@ -35,6 +94,12 @@
                type="text"
         </input>
         <button type="button" class ="login-btn" name="button">Login</button>
+      </section>
+      <section class="pending-trips hidden">
+        <h3>Trip Requests</h3>
+      </section>
+      <section class="past-trips hidden">
+        <h3>Past Trips</h3>
       </section>
     </main>
 

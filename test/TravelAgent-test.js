@@ -21,14 +21,20 @@ describe('TravelAgent', function() {
     expect(travelAgent).to.be.an.instanceof(TravelAgent);
   });
 
-  it('should be able to find a traveler\'s id by their name', function() {
-    expect(travelAgent.findUser('Rachael Vaughten', travelerData)).to.equal(2)
-  })
+  it('should be able to find a traveler by their name', function() {
+    expect(travelAgent.findUser('Rachael Vaughten', travelerData)).to.deep.equal(
+      {
+        "id": 2,
+        "name": "Rachael Vaughten",
+        "travelerType": "thrill-seeker"
+      }
+    )
+  });
 
   it('should have an id property of the traveler they are searching for', function() {
     travelAgent.findUser('Sibby Dawidowitsch', travelerData);
     expect(travelAgent.id).to.equal(3)
-  })
+  });
 
   it('should be able to find a traveler\'s trip requests', function() {
     expect(travelAgent.findTripRequests(tripsData)).to.eql(
