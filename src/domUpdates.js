@@ -38,6 +38,24 @@ const dom = {
     })
   },
 
+  renderPendingTrips: (traveler, tripData, destinationData) => {
+    let travelerTrips = traveler.findPendingTrips(tripData);
+    travelerTrips.forEach(trip => {
+      let tripDestination = destinationData.find(destination => {
+        return destination.id === trip.destinationID;
+      })
+      let html = `<div class ="pending-trip-cards">
+        <h4>${tripDestination.destination}</h4>
+        <p>Departure Date: ${trip.date}</p>
+        <p>Duration: ${trip.duration} days</p>
+        <img src=${tripDestination.image}
+             alt="${tripDestination.destination}"
+             title="${tripDestination.destination}">
+      </div>`;
+      $('.pending-trips').append(html)
+    })
+  },
+
   renderUpcomingTrips: (traveler, tripData, destinationData) => {
     let travelerTrips = traveler.findUpcomingTrips(tripData);
     travelerTrips.forEach(trip => {

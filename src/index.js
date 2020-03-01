@@ -82,6 +82,7 @@ function validateUser() {
       dom.renderUpcomingTrips(traveler, tripData, destinationData);
       dom.renderPastTrips(traveler,tripData, destinationData);
       dom.renderDestinationDropDown(destinationData);
+      dom.renderPendingTrips(traveler, tripData, destinationData);
     };
     return traveler;
   }

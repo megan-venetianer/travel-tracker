@@ -3,15 +3,16 @@ var moment = require('moment');
 class User {
   constructor(id) {
     this.id = id;
-    this.pendingTrips = [];
   }
 
   findPendingTrips(tripsData) {
+    let pendingTrips = [];
     tripsData.forEach(trip => {
       if (this.id === trip.userID && trip.status === 'pending') {
-        this.pendingTrips.push(trip)
+        pendingTrips.push(trip)
       }
     })
+    return pendingTrips;
   }
 
   findPastTrips(tripsData) {
@@ -33,7 +34,7 @@ class User {
       return this.id === trip.userID
     })
     travelersTrips.forEach(trip => {
-      if (moment(trip.date, "YYYY/MM/DD").fromNow().includes('in')) {
+      if (moment(trip.date, "YYYY/MM/DD").fromNow().includes('in') && trip.status === 'approved') {
         travelerUpcomingTrips.push(trip)
       }
     })

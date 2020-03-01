@@ -25,8 +25,8 @@ describe('User', function() {
   });
 
   it('should be able to get a user\'s pending trips', function() {
-    user1.findPendingTrips(tripsData)
-    expect(user1.pendingTrips).to.eql(
+    // user1.findPendingTrips(tripsData)
+    expect(user1.findPendingTrips(tripsData)).to.eql(
     [{
     "id": 2,
     "userID": 35,
