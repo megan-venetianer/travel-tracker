@@ -75,7 +75,7 @@ class User {
       })
       return tripDetails;
     }, 0)
-    return yearlyCost * 1.1;
+    return Math.round(yearlyCost * 1.1);
   }
 }
 

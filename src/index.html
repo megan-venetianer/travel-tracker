@@ -11,13 +11,48 @@
     <header>
       <h1>TRAVEL TRACKER</h1>
       <section class="welcome-msg">
-        <!-- <h2>Welcome Megan!</h2> -->
+      </section>
+      <section class ="amount-spent">
+
       </section>
     </header>
     <main class="main-page">
       <section class="left-section">
+        <form id="book-trip-form"
+            role="search">
+            <h3>Book a Trip!</h3>
+            <label for="date-picker">
+              Departure Date
+            </label>
+        <input id="trip-date"
+               type="date"
+               autocomplete="off"></input>
+             <label for="number-days">
+               Number of Days
+             </label>
+        <input id="number-days-input"
+              type="number"
+              autocomplete="off"></input>
+            <label for="number-days">
+              Number of Travelers
+            </label>
+      <input id="number-travelers-input"
+             type="number"
+             autocomplete="off"></input>
+        <button class="button book-trip-btn"
+                type="button"
+                name="button"
+                aria-label="Submit trip request"
+                aria-controls="search-input">
+          Submit
+        </button>
+      </form>
       </section>
-      <section class="login-form">
+      <section class="upcoming-trips">
+        <p>hi</p>
+      </section>
+      <section class="login-form hidden">
+
         <form id="login"
           class="login"
           role="login">

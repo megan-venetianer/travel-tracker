@@ -50,19 +50,21 @@ fetchAllData().then(data => {
 
 // functions
 
+let numberedTravelers = [];
+for (let i = 0; i < 50; i++) {
+  numberedTravelers.push(`traveler${i + 1}`)
+}
+
 function validateUser() {
   $('.login').submit(e => {
     e.preventDefault();
   })
   let usernameInput = $('.username-input').val();
   let usernamePassword = $('.password-input').val();
-  let numberedTravelers = [];
-  for (let i = 0; i < 50; i++) {
-    numberedTravelers.push(`traveler${i + 1}`)
-  }
   if (usernameInput === 'agency' && usernamePassword === 'travel2020') {
     dom.hideContent('.login-form');
     travelAgent = new travelAgent();
+    // dom.welcomeMessage(travelAgent.id)
   } else if (numberedTravelers.includes(usernameInput) && usernamePassword === 'travel2020') {
     dom.hideContent('.login-form');
       if (usernameInput.length === 10) {
@@ -72,10 +74,9 @@ function validateUser() {
         let userNumber = parseInt(usernameInput.split('').splice(8, 1).join(''))
         traveler = new Traveler(travelerData[`${userNumber - 1}`])
       }
-      $('.welcome-msg').html(`<h2>Welcome ${traveler.name}!</h2>`)
-      console.log(traveler)
+      dom.welcomeMessage(traveler.name);
+      dom.renderAmountSpent(traveler, tripData, destinationData);
     };
-
     return traveler;
   }
 
