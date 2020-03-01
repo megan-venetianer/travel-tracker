@@ -15,6 +15,7 @@ class User {
     return pendingTrips;
   }
 
+  // need to revisit this method since it includes current trips as well
   findPastTrips(tripsData) {
     let travelerPastTrips = [];
     let travelersTrips = tripsData.filter(trip => {
@@ -42,7 +43,6 @@ class User {
   }
 
   findPresentTrips(tripData) {
-    let currentTrip = [];
     let travelersTrips = tripData.filter(trip => {
       return this.id === trip.userID;
     })
@@ -54,8 +54,7 @@ class User {
         return trip;
       }
     })
-    currentTrip.push(presentTrip.pop());
-    return currentTrip
+      return presentTrip.pop();
   }
 
   // need to add on functionality to check if it is an approved trip

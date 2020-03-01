@@ -13,12 +13,14 @@ const dom = {
 
   renderCurrentTrip: (traveler, tripData, destinationData) => {
     let currentTrip = traveler.findPresentTrips(tripData);
-    // console.log(currentTrip)
-    currentTrip.forEach(trip => {
-      let tripDestination = destinationData.find(destination => {
-        return destination.id === trip.destinationID;
-      })
-    $('.current-trip').html(`<h2>Enjoy your current vacation in ${tripDestination.destination}!</h2>`)
+    console.log(currentTrip)
+    if (currentTrip === undefined) {
+      return
+    }
+    destinationData.forEach(destination => {
+      if (destination.id === currentTrip.destinationID) {
+        $('.current-trip').html(`<h2>Enjoy your current vacation in ${destination.destination}!</h2>`)
+      }
     })
   },
 
