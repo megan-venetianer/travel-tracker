@@ -11,6 +11,17 @@ const dom = {
     $('.amount-spent').html(`<h2>You spent $${amountSpent} on traveling this year!</h2>`);
   },
 
+  renderCurrentTrip: (traveler, tripData, destinationData) => {
+    let currentTrip = traveler.findPresentTrips(tripData);
+    // console.log(currentTrip)
+    currentTrip.forEach(trip => {
+      let tripDestination = destinationData.find(destination => {
+        return destination.id === trip.destinationID;
+      })
+    $('.current-trip').html(`<h2>Enjoy your current vacation in ${tripDestination.destination}!</h2>`)
+    })
+  },
+
   renderDestinationDropDown: (destinationData) => {
     destinationData.forEach(destination => {
       let destinationName = destination.destination;
@@ -56,6 +67,16 @@ const dom = {
     })
   },
 
+  renderTravelerDashboard: (username, traveler, tripData, destinationData) => {
+    $('.welcome-msg').html(`<h2>Welcome, ${username}!</h2>`);
+    dom.renderUpcomingTrips(traveler, tripData, destinationData);
+    dom.renderPastTrips(traveler,tripData, destinationData);
+    dom.renderDestinationDropDown(destinationData);
+    dom.renderPendingTrips(traveler, tripData, destinationData);
+    dom.renderAmountSpent(traveler, tripData, destinationData);
+    dom.renderCurrentTrip(traveler, tripData, destinationData)
+  },
+
   renderUpcomingTrips: (traveler, tripData, destinationData) => {
     let travelerTrips = traveler.findUpcomingTrips(tripData);
     travelerTrips.forEach(trip => {
@@ -78,9 +99,7 @@ const dom = {
     $(content).removeClass('hidden')
   },
 
-  welcomeMessage: (username) => {
-    $('.welcome-msg').html(`<h2>Welcome ${username}!</h2>`)
-  },
+
 
 };
 

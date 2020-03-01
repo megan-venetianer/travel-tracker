@@ -42,6 +42,7 @@ class User {
   }
 
   findPresentTrips(tripData) {
+    let currentTrip = [];
     let travelersTrips = tripData.filter(trip => {
       return this.id === trip.userID;
     })
@@ -53,7 +54,8 @@ class User {
         return trip;
       }
     })
-    return presentTrip.pop();
+    currentTrip.push(presentTrip.pop());
+    return currentTrip
   }
 
   // need to add on functionality to check if it is an approved trip
