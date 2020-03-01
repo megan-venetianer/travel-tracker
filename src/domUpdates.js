@@ -101,8 +101,15 @@ const dom = {
     $(content).removeClass('hidden')
   },
 
+  renderAgentDashboard: (travelAgent, tripData, destinationData) => {
+    $('.welcome-msg').html(`<h2>Welcome, Agent!</h2>`);
+    dom.renderAgentIncome(travelAgent, tripData, destinationData);
+  },
 
-
+  renderAgentIncome: (travelAgent, tripData, destinationData) => {
+    let amountSpent = travelAgent.getYearlyIncome(tripData, destinationData);
+    $('.amount-spent').html(`<h2>You have made $${amountSpent} in income this year!</h2>`);
+  },
 };
 
 

@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import dom from './domUpdates';
 import Traveler from './Traveler';
+import TravelAgent from './Travel-agent';
+import User from './User';
 
 // ---------- css ----------
 import './css/base.scss';
@@ -62,9 +64,9 @@ function validateUser() {
   let usernameInput = $('.username-input').val();
   let usernamePassword = $('.password-input').val();
   if (usernameInput === 'agency' && usernamePassword === 'travel2020') {
+    travelAgent = new TravelAgent();
     dom.hideContent('.login-form');
-    travelAgent = new travelAgent();
-    // dom.welcomeMessage(travelAgent.id)
+    dom.renderAgentDashboard(travelAgent, tripData, destinationData);
   } else if (numberedTravelers.includes(usernameInput) && usernamePassword === 'travel2020') {
     dom.hideContent('.login-form');
       if (usernameInput.length === 10) {
