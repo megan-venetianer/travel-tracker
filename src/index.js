@@ -75,7 +75,9 @@ function validateUser() {
         traveler = new Traveler(travelerData[`${userNumber - 1}`])
       }
       dom.welcomeMessage(traveler.name);
+      dom.unhideContent('.upcoming-trips');
       dom.renderAmountSpent(traveler, tripData, destinationData);
+      dom.renderUpcomingTrips(traveler, tripData, destinationData)
     };
     return traveler;
   }
