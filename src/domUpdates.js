@@ -37,6 +37,24 @@ const dom = {
     })
   },
 
+  renderPastTrips: (traveler, tripData, destinationData) => {
+    let travelerTrips = traveler.findPastTrips(tripData);
+    travelerTrips.forEach(trip => {
+      let tripDestination = destinationData.find(destination => {
+        return destination.id === trip.destinationID;
+      })
+      let html = `<div class ="upcoming-trip-cards">
+        <p>${tripDestination.destination}</p>
+        <p>Departure Date: ${trip.date}</p>
+        <p>Duration: ${trip.duration} days</p>
+        <img src=${tripDestination.image}
+             alt="${tripDestination.destination}"
+             title="${tripDestination.destination}">
+      </div>`;
+      $('.past-trips').append(html)
+    })
+  }
+
 };
 
 
