@@ -81,6 +81,7 @@ function validateUser() {
       dom.renderAmountSpent(traveler, tripData, destinationData);
       dom.renderUpcomingTrips(traveler, tripData, destinationData);
       dom.renderPastTrips(traveler,tripData, destinationData);
+      dom.renderDestinationDropDown(destinationData);
     };
     return traveler;
   }
