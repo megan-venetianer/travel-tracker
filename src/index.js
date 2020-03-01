@@ -77,6 +77,7 @@ function validateUser() {
       dom.welcomeMessage(traveler.name);
       dom.unhideContent('.upcoming-trips');
       dom.unhideContent('.past-trips');
+      dom.unhideContent('.pending-trips');
       dom.renderAmountSpent(traveler, tripData, destinationData);
       dom.renderUpcomingTrips(traveler, tripData, destinationData);
       dom.renderPastTrips(traveler,tripData, destinationData);

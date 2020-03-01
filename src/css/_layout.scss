@@ -82,8 +82,8 @@ label {
 
 .left-section {
   grid-area: left;
-  width: 24em;
-  margin: 0em 5em 0em 2em;
+  width: 22em;
+  margin: 0em 3em 0em 2em;
 }
 
 .login-form {
@@ -120,6 +120,21 @@ p {
   overflow-y: scroll;
 }
 
+.pending-trips {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5em;
+  background: white;
+  height: 90vh;
+  border: 3px solid black;
+  border-radius: 30px;
+  width: 15em;
+  font-family: 'Catamaran';
+  overflow-y: scroll;
+  margin: 0em 1em 0em 1em;
+}
+
 .upcoming-trips {
   display: flex;
   flex-direction: column;
@@ -132,7 +147,7 @@ p {
   width: 15em;
   font-family: 'Catamaran';
   overflow-y: scroll;
-  margin-right: 2em;
+  margin-right: 1em;
 }
 
 .upcoming-trip-cards {

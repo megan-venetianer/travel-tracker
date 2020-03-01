@@ -26,7 +26,7 @@ const dom = {
         return destination.id === trip.destinationID;
       })
       let html = `<div class ="upcoming-trip-cards">
-        <p>${tripDestination.destination}</p>
+        <h4>${tripDestination.destination}</h4>
         <p>Departure Date: ${trip.date}</p>
         <p>Duration: ${trip.duration} days</p>
         <img src=${tripDestination.image}
@@ -44,7 +44,7 @@ const dom = {
         return destination.id === trip.destinationID;
       })
       let html = `<div class ="upcoming-trip-cards">
-        <p>${tripDestination.destination}</p>
+        <h4>${tripDestination.destination}</h4>
         <p>Departure Date: ${trip.date}</p>
         <p>Duration: ${trip.duration} days</p>
         <img src=${tripDestination.image}
