@@ -121,7 +121,7 @@ function validateUser() {
   }
 
 
-export default fetchAllData;
+// export default fetchAllData;
 
 
 //
