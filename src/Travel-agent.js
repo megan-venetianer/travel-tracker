@@ -41,7 +41,6 @@ class TravelAgent extends User {
     return Math.round(yearlyCost * .1);
   }
 
-  // number of travelers on today's date
   getTodaysTravelers(tripsData) {
     let currentTrips = [];
     tripsData.filter(trip => {
@@ -59,8 +58,31 @@ class TravelAgent extends User {
   }
 
   // will require a POST request, changing the trip status to approved
-  approveTripRequest() {
+  approveTripRequest(trip) {
+    const tripModification = {
+      id: trip.id,
+      userID: trip.userID,
+      destinationID: trip.destinationID,
+      travelers: trip.travelers,
+      date: trip.date,
+      duration: trip.duration,
+      status: 'approved',
+      suggestedActivities: trip.suggestedActivities
+    }
 
+    return window
+      .fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/trips/trips', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(tripModification)
+      })
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .catch(error => {
+        console.log(error.message);
+      });
   }
 
   // will require a DELETE request to the bookings endpoint

@@ -3,6 +3,15 @@ import $ from 'jquery';
 
 const dom = {
 
+  approveTrip: (e, tripData) => {
+    let eventId = event.target.id;
+    console.log(eventId);
+    // let selectedTrip = tripData.find(trip => {
+    //   return
+    // })
+    // travelAgent.approveTripRequest(trip);
+  },
+
   getTripEstimate: (trip, destinationData) => {
     let tripEstimate = trip.getTripCost(destinationData);
     $('.trip-estimate').text(`Trip Estimate: $${tripEstimate}`);
@@ -37,10 +46,12 @@ const dom = {
         <img src=${tripDestination.image}
              alt="${tripDestination.destination}"
              title="${tripDestination.destination}">
-        <button class="approve-trip-btn">Approve</button>
+        <button class="approve-trip-btn" id=${trip.id}>Approve</button>
+        <button class="deny-trip-btn">Cancel Trip</button>
       </div>`;
       $('.trip-requests-all').append(html)
     })
+
   },
 
   renderAmountSpent: (traveler, tripData, destinationData) => {
@@ -138,6 +149,14 @@ const dom = {
       </div>`;
       $('.upcoming-trips').append(html)
     })
+  },
+
+  searchTraveler: (travelerData) => {
+    let travelerName = $('#traveler-input').val();
+    let searchedTraveler = travelerData.find(traveler => {
+      return traveler.name === travelerName;
+    })
+    return searchedTraveler;
   },
 
   unhideContent: (content) => {

@@ -54,13 +54,15 @@ fetchAllData().then(data => {
   $('.login-btn').click(validateUser);
   $('.trip-estimate-btn').click(getTripEstimate);
   $('.book-trip-btn').click(submitTripRequest);
+  $('.approve-trip-btn').click(approveTripRequest);
+  $('.search-traveler-submit').click(searchForTraveler);
 
 // -------------functions------------------
 
 let numberedTravelers = [];
 for (let i = 0; i < 50; i++) {
   numberedTravelers.push(`traveler${i + 1}`)
-}
+};
 
 function validateUser() {
   $('.login').submit(e => {
@@ -91,7 +93,7 @@ function validateUser() {
     dom.unhideContent('.left-section')
     };
     return traveler;
-  }
+  };
 
   function getDestinationID(destinationData) {
     let chosenDestination = $('.destination-dropdown').val()
@@ -99,7 +101,7 @@ function validateUser() {
       return chosenDestination === destinationInfo.destination;
     })
     return currentDestination.id;
-  }
+  };
 
   function getTripEstimate() {
     $('.book-trip-form').submit(e => {
@@ -111,13 +113,36 @@ function validateUser() {
     let travelersNumber = parseInt($('#number-travelers-input').val());
     trip = new Trip(Date.now(), traveler.id, getDestinationID(destinationData), travelersNumber, dateInput, numberDaysInput);
     dom.getTripEstimate(trip, destinationData);
-  }
+  };
 
   function submitTripRequest() {
     $('.book-trip-form').submit(e => {
       e.preventDefault();
     })
     traveler.makeTripRequest(trip);
-  }
+  };
+
+  function approveTripRequest() {
+    dom.approveTrip(e, tripData);
+  };
+
+  function cancelTrip() {
+    $('.book-trip-form').submit(e => {
+      e.preventDefault();
+    })
+    travelAgent.denyUpcomingTrip();
+  };
+
+  function searchForTraveler() {
+    let searchedTraveler = dom.searchTraveler(travelerData);
+    traveler = new Traveler(searchedTraveler);
+    dom.renderTravelerDashboard(traveler.name, traveler, tripData, destinationData);
+    dom.unhideContent('.upcoming-trips');
+    dom.unhideContent('.past-trips');
+    dom.unhideContent('.pending-trips');
+    dom.hideContent('.trip-requests-all')
+  };
+
+
 
 //

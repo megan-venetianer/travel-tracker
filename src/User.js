@@ -22,7 +22,7 @@ class User {
       return this.id === trip.userID
     })
     travelersTrips.forEach(trip => {
-      if (moment(trip.date, "YYYY/MM/DD").fromNow().includes('ago')) {
+      if (moment(trip.date, "YYYY/MM/DD").fromNow().includes('ago') && trip.status === 'approved') {
         travelerPastTrips.push(trip)
       }
     })
