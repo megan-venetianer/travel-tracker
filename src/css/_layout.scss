@@ -108,6 +108,10 @@ main {
   opacity: .8;
 }
 
+.monetary-display {
+  padding-left: 7em;
+}
+
 p {
   font-size: .7em;
 }
@@ -142,7 +146,8 @@ p {
 }
 
 .agent-form {
-  padding-left: 2em;
+  padding-left: 6em;
+  width: 20em;
 }
 
 .todays-travelers {
@@ -154,13 +159,13 @@ p {
   height: 20vh;
   border: 3px solid black;
   border-radius: 30px;
-  width: 15em;
+  width: 13em;
   font-family: 'Catamaran';
   overflow-y: scroll;
-  margin-right: 2em 1em 0em 0em;
+  margin-top: 1em;
+  text-align: center;
 }
 
-.upcoming-trips,
 .trip-requests-all {
   display: flex;
   flex-direction: column;
@@ -174,7 +179,25 @@ p {
   font-family: 'Catamaran';
   overflow-y: scroll;
   margin-right: 1em;
+  margin-left: 7em;
+  padding-left: 1em;
+}
+
+.upcoming-trips {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5em;
+  background: white;
+  height: 90vh;
+  border: 3px solid black;
+  border-radius: 30px;
+  width: 15em;
+  font-family: 'Catamaran';
+  overflow-y: scroll;
+  margin-right: 1em;
   margin-left: 1em;
+  padding-left: 1em;
 }
 
 .upcoming-trip-cards {
@@ -183,7 +206,7 @@ p {
 
 .welcome-msg {
   display: flex;
-  padding-left: 12.5em;
+  padding-left: 14.5em;
   font-size: 1.5em;
 }
 
