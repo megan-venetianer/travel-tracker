@@ -42,7 +42,6 @@ const dom = {
       </div>`;
       $('.trip-requests-all').append(html)
     })
-
   },
 
   renderAmountSpent: (traveler, tripData, destinationData) => {
