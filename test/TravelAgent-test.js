@@ -1,16 +1,25 @@
 import chai, { expect } from 'chai';
+import spies from 'chai-spies';
 import User from '../src/User';
 import Traveler from '../src/Traveler';
-import TravelAgent from '../src/Travel-agent'
+import TravelAgent from '../src/Travel-agent';
 import travelerData from '../data/sampleTravelerData';
 import tripsData from '../data/sampleTripsData';
 import destinationData from '../data/sampledestinationData';
 
+chai.use(spies);
+
 describe('TravelAgent', function() {
   let travelAgent;
+  global.window = {};
 
   beforeEach(function() {
     travelAgent = new TravelAgent();
+    chai.spy.on(window, 'fetch', () => new Promise((resolve, reject) => {}));
+  });
+
+  afterEach(function () {
+    chai.spy.restore();
   });
 
   it('should be a function', function() {
@@ -21,22 +30,7 @@ describe('TravelAgent', function() {
     expect(travelAgent).to.be.an.instanceof(TravelAgent);
   });
 
-  it('should be able to find a traveler by their name', function() {
-    expect(travelAgent.findUser('Rachael Vaughten', travelerData)).to.deep.equal(
-      {
-        "id": 2,
-        "name": "Rachael Vaughten",
-        "travelerType": "thrill-seeker"
-      }
-    )
-  });
-
-  it('should have an id property of the traveler they are searching for', function() {
-    travelAgent.findUser('Sibby Dawidowitsch', travelerData);
-    expect(travelAgent.id).to.equal(3)
-  });
-
-  it('should be able to find a traveler\'s trip requests', function() {
+  it('should be able to find all trip requests', function() {
     expect(travelAgent.findTripRequests(tripsData)).to.eql(
       [
       {
@@ -78,6 +72,43 @@ describe('TravelAgent', function() {
 
   it('should be able to find the number of traveler\'s traveling today', function() {
     expect(travelAgent.getTodaysTravelers(tripsData)).to.equal(7)
+  });
+
+  it('should be able to approve a pending trip request', function() {
+    travelAgent.approveTripRequest(354);
+    const tripModification = {
+      id: 354,
+      status: 'approved'
+    };
+    expect(window.fetch).to.be.called(1);
+    expect(window.fetch).to.be.called.with(
+      'https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/trips/updateTrip',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+      },
+        body: JSON.stringify(tripModification)
+      }
+    );
+  });
+
+  it('should be able to delete a pending trip request', function() {
+    travelAgent.denyUpcomingTrip(354);
+    const tripModification = {
+      id: 354,
+    };
+    expect(window.fetch).to.be.called(1);
+    expect(window.fetch).to.be.called.with(
+      'https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/trips/trips',
+      {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+      },
+        body: JSON.stringify(tripModification)
+      }
+    );
   })
 
 });

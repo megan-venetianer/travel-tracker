@@ -10,32 +10,6 @@ class Trip {
     this.suggestedActivities = [];
   }
 
-  // select date, number of travelers, and destination to make request.
-  // This will require POST request to the trips endpoint
-  // makeTripRequest(id, userID, destinationID, travelers, date, duration) {
-  //   const tripRequest = {
-  //
-  //   userID: id,
-  //   ingredientID,
-  //   ingredientModification: amount
-  // };
-  //
-  // return window
-  //   .fetch(BASE + USER_ENDPOINT, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(modification)
-  //   })
-  //   .then(response => response.json())
-  //   .then(data => data)
-  //   .catch(error => {
-  //     throw error;
-  //   });
-  // }
-// }
-
   getTripCost(destinationData) {
     let tripDestination = destinationData.find(destination => {
       return destination.id === this.destinationID;
