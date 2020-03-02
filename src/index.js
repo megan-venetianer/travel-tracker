@@ -9,9 +9,6 @@ var moment = require('moment');
 // ---------- css ----------
 import './css/base.scss';
 
-// ---------- images ----------
-// import './images/mountains-lake.jpg';
-
 function fetchAllData() {
   let travelerData = fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/travelers/travelers/')
   .then((response) => response.json())
@@ -36,6 +33,8 @@ function fetchAllData() {
     .catch(error => console.log(error.message));
 }
 
+// ---------variables-----------
+
 let travelerData;
 let destinationData;
 let tripData;
@@ -50,12 +49,13 @@ fetchAllData().then(data => {
 })
   .catch(error => console.log(error.message))
 
-// event listeners
+// -----------event listeners--------------
+
   $('.login-btn').click(validateUser);
   $('.trip-estimate-btn').click(getTripEstimate);
   $('.book-trip-btn').click(submitTripRequest);
 
-// functions
+// -------------functions------------------
 
 let numberedTravelers = [];
 for (let i = 0; i < 50; i++) {
@@ -119,9 +119,5 @@ function validateUser() {
     })
     traveler.makeTripRequest(trip);
   }
-
-
-// export default fetchAllData;
-
 
 //
