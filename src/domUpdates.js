@@ -3,15 +3,6 @@ import $ from 'jquery';
 
 const dom = {
 
-  approveTrip: (e) => {
-    let eventId = event.target.id;
-    console.log(eventId);
-    // let selectedTrip = tripData.find(trip => {
-    //   return
-    // })
-    // travelAgent.approveTripRequest(trip);
-  },
-
   getTripEstimate: (trip, destinationData) => {
     let tripEstimate = trip.getTripCost(destinationData);
     $('.trip-estimate').text(`Trip Estimate: $${tripEstimate}`);
@@ -39,14 +30,14 @@ const dom = {
       let tripDestination = destinationData.find(destination => {
         return destination.id === trip.destinationID;
       })
-      let html = `<div class ="trip-request-cards">
+      let html = `<div class ="trip-request-cards" id=${trip.id}>
         <h4>${tripDestination.destination}</h4>
         <p>Departure Date: ${trip.date}</p>
         <p>Duration: ${trip.duration} days</p>
         <img src=${tripDestination.image}
              alt="${tripDestination.destination}"
              title="${tripDestination.destination}">
-        <button class="approve-trip-btn" id=${trip.id}>Approve</button>
+        <button class="approve-trip-btn">Approve</button>
         <button class="deny-trip-btn">Cancel Trip</button>
       </div>`;
       $('.trip-requests-all').append(html)

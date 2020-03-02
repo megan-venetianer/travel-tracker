@@ -56,6 +56,7 @@ fetchAllData().then(data => {
   $('.book-trip-btn').click(submitTripRequest);
   $('.trip-requests-all').click(approveTripRequest);
   $('.search-traveler-submit').click(searchForTraveler);
+  $('.trip-requests-all').click(cancelTrip);
 
 // -------------functions------------------
 
@@ -127,25 +128,17 @@ function validateUser() {
   };
 
   function approveTripRequest() {
-    // console.log(tripData)
-    // console.log('hi')
-    let targetId = parseInt(event.target.id);
-    // console.log(targetId);
-    // console.log(tripData)
-    // let requestedTrip = tripData.find(trip => {
-    //   return trip.id === targetId;
-    // })
-    // console.log(requestedTrip)
-    // if ($(event.target).hasClass('approve-trip-btn')) {
-      travelAgent.approveTripRequest(targetId);
-    // }
+    if ($(event.target).hasClass("approve-trip-btn")) {
+      let targetId = parseInt(event.target.parentElement.id);
+        travelAgent.approveTripRequest(targetId);
+    }
   };
 
   function cancelTrip() {
-    $('.book-trip-form').submit(e => {
-      e.preventDefault();
-    })
-    travelAgent.denyUpcomingTrip();
+    if ($(event.target).hasClass("deny-trip-btn")) {
+      let targetId = parseInt(event.target.parentElement.id);
+        travelAgent.denyUpcomingTrip(targetId);
+    }
   };
 
   function searchForTraveler() {
