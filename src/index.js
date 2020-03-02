@@ -105,7 +105,8 @@ function validateUser() {
     $('.book-trip-form').submit(e => {
       e.preventDefault();
     });
-    let dateInput = $('#trip-date').val();
+    let dateInput = moment($('#trip-date').val()).format('YYYY/MM/DD');
+    console.log(dateInput)
     let numberDaysInput = parseInt($('#number-days-input').val());
     let travelersNumber = parseInt($('#number-travelers-input').val());
     trip = new Trip(Date.now(), traveler.id, getDestinationID(destinationData), travelersNumber, dateInput, numberDaysInput);
@@ -116,6 +117,7 @@ function validateUser() {
     $('.book-trip-form').submit(e => {
       e.preventDefault();
     })
+    traveler.makeTripRequest(trip);
   }
 
 
