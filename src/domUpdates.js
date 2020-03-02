@@ -1,4 +1,5 @@
 import $ from 'jquery';
+var moment = require('moment');
 
 const dom = {
 
@@ -45,7 +46,6 @@ const dom = {
 
   renderCurrentTrip: (traveler, tripData, destinationData) => {
     let currentTrip = traveler.findPresentTrips(tripData);
-    console.log(currentTrip)
     if (currentTrip === undefined) {
       return
     }
@@ -60,7 +60,7 @@ const dom = {
     destinationData.forEach(destination => {
       let destinationName = destination.destination;
       let html = `
-              <option value='${destinationName}'>${destinationName}</option>`;
+              <option id="destination-dropdown" value='${destinationName}'>${destinationName}</option>`;
       $('.destination-dropdown').append(html);
     })
   },

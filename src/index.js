@@ -3,6 +3,7 @@ import dom from './domUpdates';
 import Traveler from './Traveler';
 import TravelAgent from './Travel-agent';
 import User from './User';
+var moment = require('moment');
 
 // ---------- css ----------
 import './css/base.scss';
@@ -49,6 +50,8 @@ fetchAllData().then(data => {
 
 // event listeners
   $('.login-btn').click(validateUser);
+  $('.trip-estimate-btn').click(getTripEstimate);
+  $('.book-trip-btn').click(submitTripRequest);
 
 // functions
 
@@ -66,7 +69,9 @@ function validateUser() {
   if (usernameInput === 'agency' && usernamePassword === 'travel2020') {
     travelAgent = new TravelAgent();
     dom.hideContent('.login-form');
-    dom.unhideContent('.todays-travelers')
+    dom.unhideContent('.todays-travelers');
+    dom.unhideContent('.trip-requests-all');
+    dom.unhideContent('.agent-form');
     dom.renderAgentDashboard(travelAgent, tripData, destinationData);
   } else if (numberedTravelers.includes(usernameInput) && usernamePassword === 'travel2020') {
     dom.hideContent('.login-form');
@@ -77,13 +82,33 @@ function validateUser() {
         let userNumber = parseInt(usernameInput.split('').splice(8, 1).join(''))
         traveler = new Traveler(travelerData[`${userNumber - 1}`])
       }
-      dom.renderTravelerDashboard(traveler.name, traveler, tripData, destinationData);
-      dom.unhideContent('.upcoming-trips');
-      dom.unhideContent('.past-trips');
-      dom.unhideContent('.pending-trips');
-      dom.unhideContent('.left-section')
+    dom.renderTravelerDashboard(traveler.name, traveler, tripData, destinationData);
+    dom.unhideContent('.upcoming-trips');
+    dom.unhideContent('.past-trips');
+    dom.unhideContent('.pending-trips');
+    dom.unhideContent('.left-section')
     };
     return traveler;
+  }
+
+  function getTripEstimate() {
+    $('.book-trip-form').submit(e => {
+      e.preventDefault();
+    })
+    let dateInput = $('#trip-date').val();
+    let destinationInput = $('#destination-dropdown').val()
+    let numberDaysInput = parseInt($('#number-days-input').val());
+    let travelersNumber = parseInt($('#number-travelers-input').val());
+    console.log(dateInput)
+    console.log(destinationInput)
+    console.log(numberDaysInput)
+    console.log(travelersNumber)
+  }
+
+  function submitTripRequest() {
+    $('.book-trip-form').submit(e => {
+      e.preventDefault();
+    })
   }
 
 

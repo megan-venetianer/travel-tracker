@@ -18,7 +18,7 @@
       </section>
     </header>
     <main class="main-page">
-      <section class="left-section hidden">
+      <section class="left-section ">
         <form id="book-trip-form"
             role="search">
             <h3>Book a Trip!</h3>
@@ -46,6 +46,13 @@
       <input id="number-travelers-input"
              type="number"
              autocomplete="off"></input>
+        <button class="button trip-estimate-btn"
+               type="button"
+               name="button"
+               aria-label="Get trip estimate"
+               aria-controls="search-input">
+          Get Estimate
+        </button>
         <button class="button book-trip-btn"
                 type="button"
                 name="button"
@@ -58,7 +65,7 @@
       <section class="upcoming-trips hidden">
         <h3>Upcoming Trips</h3>
       </section>
-      <section class="agent-form ">
+      <section class="agent-form hidden">
         <form id="agent-search">
           <h3>Agent Dashboard</h3>
           <label for="traveler-search">
@@ -71,7 +78,7 @@
       <section class="todays-travelers hidden">
       </section>
       </section>
-      <section class="trip-requests-all">
+      <section class="trip-requests-all hidden">
         <h3>Pending Trip Requests</h3>
       </section>
       <section class="login-form ">
