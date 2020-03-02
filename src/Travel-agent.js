@@ -4,7 +4,6 @@ var moment = require('moment');
 class TravelAgent extends User {
   constructor() {
     super();
-    this.id;
   }
 
   // findUser(travelerName, travelerData) {
