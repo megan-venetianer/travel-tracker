@@ -3,6 +3,8 @@ import dom from './domUpdates';
 import Traveler from './Traveler';
 import TravelAgent from './Travel-agent';
 import User from './User';
+import Trip from './Trips';
+var moment = require('moment');
 
 // ---------- css ----------
 import './css/base.scss';
@@ -39,6 +41,7 @@ let destinationData;
 let tripData;
 let traveler;
 let travelAgent;
+let trip;
 
 fetchAllData().then(data => {
   travelerData = data.travelerData;
@@ -49,6 +52,8 @@ fetchAllData().then(data => {
 
 // event listeners
   $('.login-btn').click(validateUser);
+  $('.trip-estimate-btn').click(getTripEstimate);
+  $('.book-trip-btn').click(submitTripRequest);
 
 // functions
 
@@ -66,7 +71,9 @@ function validateUser() {
   if (usernameInput === 'agency' && usernamePassword === 'travel2020') {
     travelAgent = new TravelAgent();
     dom.hideContent('.login-form');
-    dom.unhideContent('.todays-travelers')
+    dom.unhideContent('.todays-travelers');
+    dom.unhideContent('.trip-requests-all');
+    dom.unhideContent('.agent-form');
     dom.renderAgentDashboard(travelAgent, tripData, destinationData);
   } else if (numberedTravelers.includes(usernameInput) && usernamePassword === 'travel2020') {
     dom.hideContent('.login-form');
@@ -77,17 +84,44 @@ function validateUser() {
         let userNumber = parseInt(usernameInput.split('').splice(8, 1).join(''))
         traveler = new Traveler(travelerData[`${userNumber - 1}`])
       }
-      dom.renderTravelerDashboard(traveler.name, traveler, tripData, destinationData);
-      dom.unhideContent('.upcoming-trips');
-      dom.unhideContent('.past-trips');
-      dom.unhideContent('.pending-trips');
-      dom.unhideContent('.left-section')
+    dom.renderTravelerDashboard(traveler.name, traveler, tripData, destinationData);
+    dom.unhideContent('.upcoming-trips');
+    dom.unhideContent('.past-trips');
+    dom.unhideContent('.pending-trips');
+    dom.unhideContent('.left-section')
     };
     return traveler;
   }
 
+  function getDestinationID(destinationData) {
+    let chosenDestination = $('.destination-dropdown').val()
+    let currentDestination = destinationData.find(destinationInfo => {
+      return chosenDestination === destinationInfo.destination;
+    })
+    return currentDestination.id;
+  }
 
-export default fetchAllData;
+  function getTripEstimate() {
+    $('.book-trip-form').submit(e => {
+      e.preventDefault();
+    });
+    let dateInput = moment($('#trip-date').val()).format('YYYY/MM/DD');
+    console.log(dateInput)
+    let numberDaysInput = parseInt($('#number-days-input').val());
+    let travelersNumber = parseInt($('#number-travelers-input').val());
+    trip = new Trip(Date.now(), traveler.id, getDestinationID(destinationData), travelersNumber, dateInput, numberDaysInput);
+    dom.getTripEstimate(trip, destinationData);
+  }
+
+  function submitTripRequest() {
+    $('.book-trip-form').submit(e => {
+      e.preventDefault();
+    })
+    traveler.makeTripRequest(trip);
+  }
+
+
+// export default fetchAllData;
 
 
 //

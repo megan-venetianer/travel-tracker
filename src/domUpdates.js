@@ -1,6 +1,12 @@
 import $ from 'jquery';
+var moment = require('moment');
 
 const dom = {
+
+  getTripEstimate: (trip, destinationData) => {
+    let tripEstimate = trip.getTripCost(destinationData);
+    $('.trip-estimate').text(`Trip Estimate: $${tripEstimate}`);
+  },
 
   hideContent: (content) => {
     $(content).hide()
@@ -20,7 +26,6 @@ const dom = {
 
   renderAllPendingTrips: (travelAgent, tripData, destinationData) => {
     let pendingTrips = travelAgent.findTripRequests(tripData);
-    console.log(travelAgent.findTripRequests(tripData))
     pendingTrips.forEach(trip => {
       let tripDestination = destinationData.find(destination => {
         return destination.id === trip.destinationID;
@@ -45,7 +50,6 @@ const dom = {
 
   renderCurrentTrip: (traveler, tripData, destinationData) => {
     let currentTrip = traveler.findPresentTrips(tripData);
-    console.log(currentTrip)
     if (currentTrip === undefined) {
       return
     }
@@ -60,7 +64,7 @@ const dom = {
     destinationData.forEach(destination => {
       let destinationName = destination.destination;
       let html = `
-              <option value='${destinationName}'>${destinationName}</option>`;
+              <option id="destination-dropdown" value='${destinationName}'>${destinationName}</option>`;
       $('.destination-dropdown').append(html);
     })
   },
