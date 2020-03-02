@@ -22,7 +22,7 @@ class User {
       return this.id === trip.userID
     })
     travelersTrips.forEach(trip => {
-      if (moment(trip.date, "YYYY/MM/DD").fromNow().includes('ago')) {
+      if (moment(trip.date, "YYYY/MM/DD").fromNow().includes('ago') && trip.status === 'approved') {
         travelerPastTrips.push(trip)
       }
     })
@@ -57,7 +57,6 @@ class User {
       return presentTrip.pop();
   }
 
-  // need to add on functionality to check if it is an approved trip
   findAmountSpent(tripData, destinationData) {
     let yearsTrips = [];
     let travelersTrips = tripData.filter(trip => {
@@ -65,7 +64,7 @@ class User {
     })
     travelersTrips.forEach(trip => {
       let thisYearsTrips = trip.date.split('');
-      if (thisYearsTrips[3] === '0') {
+      if (thisYearsTrips[3] === '0' && trip.status === 'approved') {
         yearsTrips.push(trip)
       }
     })

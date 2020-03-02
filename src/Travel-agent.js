@@ -7,13 +7,13 @@ class TravelAgent extends User {
     this.id;
   }
 
-  findUser(travelerName, travelerData) {
-    let travelerInfo = travelerData.filter(traveler => {
-      return travelerName === traveler.name;
-    })
-    this.id = travelerInfo[0].id;
-    return travelerInfo[0];
-  }
+  // findUser(travelerName, travelerData) {
+  //   let travelerInfo = travelerData.filter(traveler => {
+  //     return travelerName === traveler.name;
+  //   })
+  //   this.id = travelerInfo[0].id;
+  //   return travelerInfo[0];
+  // }
 
   findTripRequests(tripsData) {
     return tripsData.filter(trip => {
@@ -41,7 +41,6 @@ class TravelAgent extends User {
     return Math.round(yearlyCost * .1);
   }
 
-  // number of travelers on today's date
   getTodaysTravelers(tripsData) {
     let currentTrips = [];
     tripsData.filter(trip => {
@@ -59,13 +58,45 @@ class TravelAgent extends User {
   }
 
   // will require a POST request, changing the trip status to approved
-  approveTripRequest() {
+  approveTripRequest(id) {
+    const tripModification = {
+      id: id,
+      status: 'approved'
+    }
 
+    return window
+      .fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/trips/updateTrip', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(tripModification)
+      })
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .catch(error => {
+        console.log(error.message);
+      });
   }
 
-  // will require a DELETE request to the bookings endpoint
-  denyUpcomingTrip() {
+  denyUpcomingTrip(id) {
+    const modification = {
+      id: id
+    }
 
+    return window
+      .fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/trips/trips', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(modification)
+      })
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .catch(error => {
+        console.log(error.message);
+    });
   }
 }
 

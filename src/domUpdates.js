@@ -1,5 +1,5 @@
 import $ from 'jquery';
-var moment = require('moment');
+// var moment = require('moment');
 
 const dom = {
 
@@ -30,7 +30,7 @@ const dom = {
       let tripDestination = destinationData.find(destination => {
         return destination.id === trip.destinationID;
       })
-      let html = `<div class ="trip-request-cards">
+      let html = `<div class ="trip-request-cards" id=${trip.id}>
         <h4>${tripDestination.destination}</h4>
         <p>Departure Date: ${trip.date}</p>
         <p>Duration: ${trip.duration} days</p>
@@ -38,6 +38,7 @@ const dom = {
              alt="${tripDestination.destination}"
              title="${tripDestination.destination}">
         <button class="approve-trip-btn">Approve</button>
+        <button class="deny-trip-btn">Cancel Trip</button>
       </div>`;
       $('.trip-requests-all').append(html)
     })
@@ -64,7 +65,9 @@ const dom = {
     destinationData.forEach(destination => {
       let destinationName = destination.destination;
       let html = `
-              <option id="destination-dropdown" value='${destinationName}'>${destinationName}</option>`;
+              <option id="destination-dropdown"
+              value='${destinationName}'>${destinationName}
+              </option>`;
       $('.destination-dropdown').append(html);
     })
   },
@@ -136,6 +139,14 @@ const dom = {
       </div>`;
       $('.upcoming-trips').append(html)
     })
+  },
+
+  searchTraveler: (travelerData) => {
+    let travelerName = $('#traveler-input').val();
+    let searchedTraveler = travelerData.find(traveler => {
+      return traveler.name === travelerName;
+    })
+    return searchedTraveler;
   },
 
   unhideContent: (content) => {
