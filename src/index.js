@@ -54,7 +54,7 @@ fetchAllData().then(data => {
   $('.login-btn').click(validateUser);
   $('.trip-estimate-btn').click(getTripEstimate);
   $('.book-trip-btn').click(submitTripRequest);
-  $('.approve-trip-btn').click(approveTripRequest);
+  $('.trip-requests-all').click(approveTripRequest);
   $('.search-traveler-submit').click(searchForTraveler);
 
 // -------------functions------------------
@@ -103,15 +103,18 @@ function validateUser() {
     return currentDestination.id;
   };
 
+  function instantiateTrip() {
+    let dateInput = moment($('#trip-date').val()).format('YYYY/MM/DD');
+    let numberDaysInput = parseInt($('#number-days-input').val());
+    let travelersNumber = parseInt($('#number-travelers-input').val());
+    trip = new Trip(Date.now(), traveler.id, getDestinationID(destinationData), travelersNumber, dateInput, numberDaysInput);
+  }
+
   function getTripEstimate() {
     $('.book-trip-form').submit(e => {
       e.preventDefault();
     });
-    let dateInput = moment($('#trip-date').val()).format('YYYY/MM/DD');
-    console.log(dateInput)
-    let numberDaysInput = parseInt($('#number-days-input').val());
-    let travelersNumber = parseInt($('#number-travelers-input').val());
-    trip = new Trip(Date.now(), traveler.id, getDestinationID(destinationData), travelersNumber, dateInput, numberDaysInput);
+    instantiateTrip();
     dom.getTripEstimate(trip, destinationData);
   };
 
@@ -119,11 +122,23 @@ function validateUser() {
     $('.book-trip-form').submit(e => {
       e.preventDefault();
     })
+    instantiateTrip();
     traveler.makeTripRequest(trip);
   };
 
   function approveTripRequest() {
-    dom.approveTrip(e, tripData);
+    // console.log(tripData)
+    // console.log('hi')
+    let targetId = parseInt(event.target.id);
+    // console.log(targetId);
+    // console.log(tripData)
+    // let requestedTrip = tripData.find(trip => {
+    //   return trip.id === targetId;
+    // })
+    // console.log(requestedTrip)
+    // if ($(event.target).hasClass('approve-trip-btn')) {
+      travelAgent.approveTripRequest(targetId);
+    // }
   };
 
   function cancelTrip() {

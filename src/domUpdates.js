@@ -3,7 +3,7 @@ import $ from 'jquery';
 
 const dom = {
 
-  approveTrip: (e, tripData) => {
+  approveTrip: (e) => {
     let eventId = event.target.id;
     console.log(eventId);
     // let selectedTrip = tripData.find(trip => {

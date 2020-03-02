@@ -7,13 +7,13 @@ class TravelAgent extends User {
     this.id;
   }
 
-  findUser(travelerName, travelerData) {
-    let travelerInfo = travelerData.filter(traveler => {
-      return travelerName === traveler.name;
-    })
-    this.id = travelerInfo[0].id;
-    return travelerInfo[0];
-  }
+  // findUser(travelerName, travelerData) {
+  //   let travelerInfo = travelerData.filter(traveler => {
+  //     return travelerName === traveler.name;
+  //   })
+  //   this.id = travelerInfo[0].id;
+  //   return travelerInfo[0];
+  // }
 
   findTripRequests(tripsData) {
     return tripsData.filter(trip => {
@@ -58,20 +58,20 @@ class TravelAgent extends User {
   }
 
   // will require a POST request, changing the trip status to approved
-  approveTripRequest(trip) {
+  approveTripRequest(id) {
     const tripModification = {
-      id: trip.id,
-      userID: trip.userID,
-      destinationID: trip.destinationID,
-      travelers: trip.travelers,
-      date: trip.date,
-      duration: trip.duration,
-      status: 'approved',
-      suggestedActivities: trip.suggestedActivities
+      id: id,
+      // userID: trip.userID,
+      // destinationID: trip.destinationID,
+      // travelers: trip.travelers,
+      // date: trip.date,
+      // duration: trip.duration,
+      status: 'approved'
+      // suggestedActivities: trip.suggestedActivities
     }
 
     return window
-      .fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/trips/trips', {
+      .fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/trips/updateTrip', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
