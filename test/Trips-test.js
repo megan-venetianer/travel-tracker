@@ -54,7 +54,7 @@ describe('Trip', function() {
 
   it('should be able to calculate the cost of a trip request', function() {
     expect(trip.getTripCost(destinationData)).to.equal(6463)
-  })
+  });
 
 });
 

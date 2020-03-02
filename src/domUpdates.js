@@ -3,6 +3,11 @@ var moment = require('moment');
 
 const dom = {
 
+  getTripEstimate: (trip, destinationData) => {
+    let tripEstimate = trip.getTripCost(destinationData);
+    $('.trip-estimate').text(`Trip Estimate: $${tripEstimate}`);
+  },
+
   hideContent: (content) => {
     $(content).hide()
   },
@@ -21,7 +26,6 @@ const dom = {
 
   renderAllPendingTrips: (travelAgent, tripData, destinationData) => {
     let pendingTrips = travelAgent.findTripRequests(tripData);
-    console.log(travelAgent.findTripRequests(tripData))
     pendingTrips.forEach(trip => {
       let tripDestination = destinationData.find(destination => {
         return destination.id === trip.destinationID;

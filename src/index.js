@@ -3,6 +3,7 @@ import dom from './domUpdates';
 import Traveler from './Traveler';
 import TravelAgent from './Travel-agent';
 import User from './User';
+import Trip from './Trips';
 var moment = require('moment');
 
 // ---------- css ----------
@@ -40,6 +41,7 @@ let destinationData;
 let tripData;
 let traveler;
 let travelAgent;
+let trip;
 
 fetchAllData().then(data => {
   travelerData = data.travelerData;
@@ -91,18 +93,23 @@ function validateUser() {
     return traveler;
   }
 
+  function getDestinationID(destinationData) {
+    let chosenDestination = $('.destination-dropdown').val()
+    let currentDestination = destinationData.find(destinationInfo => {
+      return chosenDestination === destinationInfo.destination;
+    })
+    return currentDestination.id;
+  }
+
   function getTripEstimate() {
     $('.book-trip-form').submit(e => {
       e.preventDefault();
-    })
+    });
     let dateInput = $('#trip-date').val();
-    let destinationInput = $('#destination-dropdown').val()
     let numberDaysInput = parseInt($('#number-days-input').val());
     let travelersNumber = parseInt($('#number-travelers-input').val());
-    console.log(dateInput)
-    console.log(destinationInput)
-    console.log(numberDaysInput)
-    console.log(travelersNumber)
+    trip = new Trip(Date.now(), traveler.id, getDestinationID(destinationData), travelersNumber, dateInput, numberDaysInput);
+    dom.getTripEstimate(trip, destinationData);
   }
 
   function submitTripRequest() {
