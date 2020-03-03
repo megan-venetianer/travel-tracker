@@ -128,6 +128,7 @@ p {
   width: 15em;
   font-family: 'Catamaran';
   overflow-y: scroll;
+  text-align: center;
 }
 
 .pending-trips {
@@ -143,10 +144,12 @@ p {
   font-family: 'Catamaran';
   overflow-y: scroll;
   margin: 0em 1em 0em 1em;
+  text-align: center;
 }
 
 .agent-form {
-  padding-left: 6em;
+  padding-left: 5em;
+  margin-right: 1em;
   width: 20em;
 }
 
@@ -180,7 +183,7 @@ p {
   overflow-y: scroll;
   margin-right: 1em;
   margin-left: 7em;
-  padding-left: 1em;
+  text-align: center;
 }
 
 .upcoming-trips {
@@ -195,9 +198,7 @@ p {
   width: 15em;
   font-family: 'Catamaran';
   overflow-y: scroll;
-  margin-right: 1em;
-  margin-left: 1em;
-  padding-left: 1em;
+  text-align: center;
 }
 
 .upcoming-trip-cards {

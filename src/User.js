@@ -50,7 +50,7 @@ class User {
       let startDate = new Date(trip.date);
       let endDate = new Date(moment(startDate).add(trip.duration, 'days'));
       let today = new Date();
-      if (startDate < today && today < endDate) {
+      if (startDate < today && today < endDate && trip.status === 'approved') {
         return trip;
       }
     })

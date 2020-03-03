@@ -30,6 +30,7 @@ const dom = {
       let tripDestination = destinationData.find(destination => {
         return destination.id === trip.destinationID;
       })
+      console.log(tripDestination)
       let html = `<div class ="trip-request-cards" id=${trip.id}>
         <h4>${tripDestination.destination}</h4>
         <p>Departure Date: ${trip.date}</p>
@@ -104,8 +105,41 @@ const dom = {
              alt="${tripDestination.destination}"
              title="${tripDestination.destination}">
       </div>`;
-      $('.pending-trips').append(html)
+      $('.pending-trips').append(html);
     })
+  },
+
+  renderSearchedTravelerPending: (traveler, tripData, destinationData) => {
+    let travelerTrips = traveler.findPendingTrips(tripData);
+    travelerTrips.forEach(trip => {
+      let tripDestination = destinationData.find(destination => {
+        return destination.id === trip.destinationID;
+      })
+      let html = `<div class ="pending-trip-cards" id=${trip.id}>
+        <h4>${tripDestination.destination}</h4>
+        <p>Departure Date: ${trip.date}</p>
+        <p>Duration: ${trip.duration} days</p>
+        <img src=${tripDestination.image}
+             alt="${tripDestination.destination}"
+             title="${tripDestination.destination}">
+        <button class="approve-trip-btn">Approve</button>
+        <button class="deny-trip-btn">Cancel Trip</button>
+      </div>`;
+      $('.pending-trips').append(html);
+    })
+  },
+
+  clearTrips() {
+    $('.upcoming-trip-cards').empty();
+    $('.pending-trip-cards').empty();
+    $('.past-trip-cards').empty();
+  },
+
+  renderSearchedTravelerInfo: (traveler, tripData, destinationData) => {
+    $('.welcome-msg').html(`<h2>${traveler.name}'s Trips</h2>`);
+    dom.renderSearchedTravelerPending(traveler, tripData, destinationData);
+    dom.renderUpcomingTrips(traveler, tripData, destinationData);
+    dom.renderPastTrips(traveler,tripData, destinationData);
   },
 
   renderTodaysTravelers: (travelAgent, tripData) => {

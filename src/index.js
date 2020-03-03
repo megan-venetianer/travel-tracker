@@ -55,8 +55,10 @@ fetchAllData().then(data => {
   $('.trip-estimate-btn').click(getTripEstimate);
   $('.book-trip-btn').click(submitTripRequest);
   $('.trip-requests-all').click(approveTripRequest);
-  $('.search-traveler-submit').click(searchForTraveler);
   $('.trip-requests-all').click(cancelTrip);
+  $('.pending-trips').click(approveTripRequest);
+  $('.pending-trips').click(cancelTrip);
+  $('.search-traveler-submit').click(searchForTraveler);
 
 // -------------functions------------------
 
@@ -128,9 +130,11 @@ function validateUser() {
   };
 
   function approveTripRequest() {
+    console.log('hi')
     if ($(event.target).hasClass("approve-trip-btn")) {
       let targetId = parseInt(event.target.parentElement.id);
         travelAgent.approveTripRequest(targetId);
+        console.log(targetId);
     }
   };
 
@@ -144,11 +148,13 @@ function validateUser() {
   function searchForTraveler() {
     let searchedTraveler = dom.searchTraveler(travelerData);
     traveler = new Traveler(searchedTraveler);
-    dom.renderTravelerDashboard(traveler.name, traveler, tripData, destinationData);
+    dom.clearTrips();
     dom.unhideContent('.upcoming-trips');
     dom.unhideContent('.past-trips');
     dom.unhideContent('.pending-trips');
-    dom.hideContent('.trip-requests-all')
+    dom.hideContent('.trip-requests-all');
+    dom.renderSearchedTravelerInfo(traveler, tripData, destinationData);
+    dom.renderAgentIncome(travelAgent, tripData, destinationData);
   };
 
 
