@@ -1,0 +1,42 @@
+// mobile
+
+@mixin main--sm {
+  .main-page {
+    display: block;
+  }
+  #book-trip-form,
+  .upcoming-trips,
+  .pending-trips,
+  .past-trips,
+  .todays-travelers,
+  .trip-requests-all {
+    margin: 1em 1em 1em 2em;
+  }
+}
+
+@mixin agent--sm {
+  .monetary-display {
+    margin-top: 4em;
+  }
+  header {
+    margin-left: 2em;
+    display: block;
+  }
+  h2 {
+    display: block;
+  }
+  .trip-requests-all {
+    margin: 1em 0em 1em 3em;
+  }
+  .welcome-msg {
+    padding-left: .5em;
+  }
+}
+
+
+@media (max-width: 1300px) {
+  @include main--sm();
+  @include agent--sm();
+}
+
+//
