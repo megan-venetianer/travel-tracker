@@ -1,9 +1,3 @@
-.amount-spent {
-  display: flex;
-  align-items: right;
-  padding-left: 11em;
-}
-
 body {
   display: grid;
   grid-template-areas:
@@ -14,57 +8,8 @@ body {
   grid-template-rows: 1fr 1fr 1fr;
   background: url('../images/mountains-lake.jpg');
   background-size: cover;
-  // opacity: .7;
   height: 120vh;
   font-family: $primary-font-family;
-}
-
-button {
-  height: 1.8em;
-  width: 7em;
-  font-size: .8em;
-  font-family: '$primary-font-family';
-  background: $button-background;
-  color: $white;
-  border-radius: 10px;
-  &:hover {
-    background: $button-hover;
-  }
-}
-
-.destination-dropdown {
-  font-family: 'Catamaran';
-  font-size: .6em;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  font-size: 1.5em;
-  background: $white;;
-  height: 70%;
-  border: 3px solid black;
-  border-radius: 30px;
-  font-family: 'Catamaran';
-}
-
-h1 {
-  font-size: 2em;
-  align-content: left;
-}
-
-header {
-  grid-area: header;
-  margin-left: 2em;
-  display: flex;
-}
-
-img {
-  height: 8em;
-  width: 14em;
-  border-radius: .5em;
 }
 
 .icon {
@@ -73,27 +18,10 @@ img {
   padding: 1.5em 0em 1em .5em;
 }
 
-
-input {
-  font-size: 1em;
-  border: 2px solid black;
-  font-family: $primary-font-family;
-}
-
-label {
-  font-size: .8em;
-}
-
 .left-section {
   grid-area: left;
   width: 22em;
   margin: 0em 3em 0em 2em;
-}
-
-.login-form {
-  display: grid;
-  grid-area: middle;
-  width: 26em;
 }
 
 main {
@@ -106,28 +34,8 @@ main {
   opacity: .8;
 }
 
-.monetary-display {
-  padding-left: 7em;
-}
-
 p {
   font-size: .7em;
-}
-
-.agent-form {
-  padding-left: 5em;
-  margin-right: 1em;
-  width: 20em;
-}
-
-.upcoming-trip-cards {
-  width: 14em;
-}
-
-.welcome-msg {
-  display: flex;
-  padding-left: 14.5em;
-  font-size: 1.5em;
 }
 
 .hidden {

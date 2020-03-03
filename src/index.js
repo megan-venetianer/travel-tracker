@@ -12,7 +12,7 @@ import './css/base.scss';
 // ---------- images ----------
 import './images/rocketship.svg';
 
-
+// ------fetch functions-------
 function fetchAllData() {
   let travelerData = fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/travelers/travelers/')
   .then((response) => response.json())
@@ -72,9 +72,6 @@ for (let i = 0; i < 50; i++) {
 };
 
 function validateUser() {
-  $('.login').submit(e => {
-    e.preventDefault();
-  })
   let usernameInput = $('.username-input').val();
   let usernamePassword = $('.password-input').val();
   if (usernameInput === 'agency' && usernamePassword === 'travel2020') {
@@ -98,7 +95,9 @@ function validateUser() {
     dom.unhideContent('.past-trips');
     dom.unhideContent('.pending-trips');
     dom.unhideContent('.left-section')
-    };
+  } else {
+    $('.error-message').text(`Incorrect username or password`)
+  }
     return traveler;
   };
 
@@ -134,11 +133,9 @@ function validateUser() {
   };
 
   function approveTripRequest() {
-    console.log('hi')
     if ($(event.target).hasClass("approve-trip-btn")) {
       let targetId = parseInt(event.target.parentElement.id);
         travelAgent.approveTripRequest(targetId);
-        console.log(targetId);
     }
   };
 
