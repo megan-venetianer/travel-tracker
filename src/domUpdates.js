@@ -139,7 +139,7 @@ const dom = {
     $('.welcome-msg').html(`<h2>${traveler.name}'s Trips</h2>`);
     dom.renderSearchedTravelerPending(traveler, tripData, destinationData);
     dom.renderUpcomingTrips(traveler, tripData, destinationData);
-    dom.renderPastTrips(traveler,tripData, destinationData);
+    dom.renderPastTrips(traveler,tripData, destinationData)
   },
 
   renderTodaysTravelers: (travelAgent, tripData) => {

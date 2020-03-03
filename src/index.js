@@ -9,6 +9,10 @@ var moment = require('moment');
 // ---------- css ----------
 import './css/base.scss';
 
+// ---------- images ----------
+import './images/rocketship.svg';
+
+
 function fetchAllData() {
   let travelerData = fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/travelers/travelers/')
   .then((response) => response.json())
