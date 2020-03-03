@@ -1,0 +1,19 @@
+@mixin primary-trips-layout() {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5em;
+  background: white;
+  height: 90vh;
+  border: 3px solid black;
+  border-radius: 30px;
+  width: 15em;
+  font-family: 'Catamaran';
+  overflow-y: scroll;
+  text-align: center;
+}
+
+// @mixin form-layout() {
+// 
+// }
+//
