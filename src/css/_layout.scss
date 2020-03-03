@@ -16,21 +16,19 @@ body {
   background-size: cover;
   // opacity: .7;
   height: 120vh;
-  margin: 0;
-  padding: 0;
-  font-family: 'Catamaran';
+  font-family: $primary-font-family;
 }
 
 button {
   height: 1.8em;
   width: 7em;
   font-size: .8em;
-  font-family: 'Catamaran';
-  background: #4B6247;
-  color: white;
+  font-family: '$primary-font-family';
+  background: $button-background;
+  color: $white;
   border-radius: 10px;
   &:hover {
-    background: #0F5672;
+    background: $button-hover;
   }
 }
 
@@ -45,7 +43,7 @@ form {
   align-items: center;
   justify-content: space-around;
   font-size: 1.5em;
-  background: white;
+  background: $white;;
   height: 70%;
   border: 3px solid black;
   border-radius: 30px;
@@ -75,10 +73,11 @@ img {
   padding: 1.5em 0em 1em .5em;
 }
 
+
 input {
   font-size: 1em;
   border: 2px solid black;
-  font-family: 'Catamaran';
+  font-family: $primary-font-family;
 }
 
 label {
@@ -119,6 +118,10 @@ p {
   padding-left: 5em;
   margin-right: 1em;
   width: 20em;
+}
+
+.upcoming-trip-cards {
+  width: 14em;
 }
 
 .welcome-msg {
