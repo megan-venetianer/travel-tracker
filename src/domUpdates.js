@@ -1,5 +1,4 @@
 import $ from 'jquery';
-// var moment = require('moment');
 
 const dom = {
 
@@ -186,9 +185,7 @@ const dom = {
   unhideContent: (content) => {
     $(content).removeClass('hidden')
   },
-
 };
-
 
 export default dom;
 

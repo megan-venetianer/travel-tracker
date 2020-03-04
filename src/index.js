@@ -1,10 +1,10 @@
 import $ from 'jquery';
 import dom from './domUpdates';
+var moment = require('moment');
 import Traveler from './Traveler';
 import TravelAgent from './Travel-agent';
-import User from './User';
 import Trip from './Trips';
-var moment = require('moment');
+import User from './User';
 
 // ---------- css ----------
 import './css/base.scss';
@@ -39,11 +39,11 @@ function fetchAllData() {
 
 // ---------variables-----------
 
-let travelerData;
 let destinationData;
-let tripData;
 let traveler;
 let travelAgent;
+let travelerData;
+let tripData;
 let trip;
 
 fetchAllData().then(data => {
@@ -77,9 +77,7 @@ function validateUser() {
   if (usernameInput === 'agency' && usernamePassword === 'travel2020') {
     travelAgent = new TravelAgent();
     dom.hideContent('.login-form');
-    dom.unhideContent('.todays-travelers');
-    dom.unhideContent('.trip-requests-all');
-    dom.unhideContent('.agent-form');
+    dom.unhideContent('.todays-travelers, .trip-requests-all, .agent-form');
     dom.renderAgentDashboard(travelAgent, tripData, destinationData);
   } else if (numberedTravelers.includes(usernameInput) && usernamePassword === 'travel2020') {
     dom.hideContent('.login-form');
@@ -91,10 +89,7 @@ function validateUser() {
         traveler = new Traveler(travelerData[`${userNumber - 1}`])
       }
     dom.renderTravelerDashboard(traveler.name, traveler, tripData, destinationData);
-    dom.unhideContent('.upcoming-trips');
-    dom.unhideContent('.past-trips');
-    dom.unhideContent('.pending-trips');
-    dom.unhideContent('.left-section')
+    dom.unhideContent('.upcoming-trips, .past-trips, .pending-trips, .left-section');
   } else {
     $('.error-message').text(`Incorrect username or password`)
   }
@@ -150,14 +145,10 @@ function validateUser() {
     let searchedTraveler = dom.searchTraveler(travelerData);
     traveler = new Traveler(searchedTraveler);
     dom.clearTrips();
-    dom.unhideContent('.upcoming-trips');
-    dom.unhideContent('.past-trips');
-    dom.unhideContent('.pending-trips');
+    dom.unhideContent('.upcoming-trips, .past-trips, .pending-trips');
     dom.hideContent('.trip-requests-all');
     dom.renderSearchedTravelerInfo(traveler, tripData, destinationData);
     dom.renderAgentIncome(travelAgent, tripData, destinationData);
   };
-
-
 
 //

@@ -6,21 +6,12 @@ class TravelAgent extends User {
     super();
   }
 
-  // findUser(travelerName, travelerData) {
-  //   let travelerInfo = travelerData.filter(traveler => {
-  //     return travelerName === traveler.name;
-  //   })
-  //   this.id = travelerInfo[0].id;
-  //   return travelerInfo[0];
-  // }
-
   findTripRequests(tripsData) {
     return tripsData.filter(trip => {
       return trip.status === 'pending'
     })
   }
 
-  // total income generated this year (10% of user trip cost)
   getYearlyIncome(tripsData, destinationData) {
     let yearsTrips = [];
     tripsData.forEach(trip => {
@@ -56,7 +47,6 @@ class TravelAgent extends User {
     }, 0)
   }
 
-  // will require a POST request, changing the trip status to approved
   approveTripRequest(id) {
     const tripModification = {
       id: id,

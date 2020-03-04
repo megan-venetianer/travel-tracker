@@ -25,7 +25,6 @@ describe('User', function() {
   });
 
   it('should be able to get a user\'s pending trips', function() {
-    // user1.findPendingTrips(tripsData)
     expect(user1.findPendingTrips(tripsData)).to.eql(
     [{
     "id": 2,
@@ -110,8 +109,7 @@ describe('User', function() {
       "duration": 20,
       "status": "approved",
       "suggestedActivities": []
-    }
-    )
+    })
   });
 
   it('should calculate how much a traveler has spent on trips in this calendar year', function() {

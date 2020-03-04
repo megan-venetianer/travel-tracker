@@ -17,7 +17,6 @@ class Trip {
     let totalCost = tripDestination.estimatedLodgingCostPerDay * this.duration + tripDestination.estimatedFlightCostPerPerson * this.travelers;
     return Math.round(totalCost * 1.1);
   }
-
 }
 
 export default Trip;
