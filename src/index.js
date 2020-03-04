@@ -63,6 +63,9 @@ fetchAllData().then(data => {
   $('.pending-trips').click(approveTripRequest);
   $('.pending-trips').click(cancelTrip);
   $('.search-traveler-submit').click(searchForTraveler);
+  $('#trip-date').keyup(enableButtons);
+  $('#number-days-input').keyup(enableButtons);
+  $('#number-travelers-input').keyup(enableButtons)
 
 // -------------functions------------------
 
@@ -109,7 +112,16 @@ function validateUser() {
     let numberDaysInput = parseInt($('#number-days-input').val());
     let travelersNumber = parseInt($('#number-travelers-input').val());
     trip = new Trip(Date.now(), traveler.id, getDestinationID(destinationData), travelersNumber, dateInput, numberDaysInput);
-  }
+  };
+
+  function enableButtons() {
+    let dateInput = moment($('#trip-date').val()).format('YYYY/MM/DD');
+    let numberDaysInput = parseInt($('#number-days-input').val());
+    let travelersNumber = parseInt($('#number-travelers-input').val());
+    if (numberDaysInput && dateInput && travelersNumber) {
+      $('.button').prop('disabled', false);
+    }
+  };
 
   function getTripEstimate() {
     $('.book-trip-form').submit(e => {
@@ -131,6 +143,7 @@ function validateUser() {
     if ($(event.target).hasClass("approve-trip-btn")) {
       let targetId = parseInt(event.target.parentElement.id);
         travelAgent.approveTripRequest(targetId);
+
     }
   };
 

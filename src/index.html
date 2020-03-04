@@ -51,6 +51,7 @@
             <div class="trip-estimate">
             </div>
         <button class="button trip-estimate-btn"
+               disabled = disabled
                type="button"
                name="button"
                aria-label="Get trip estimate"
@@ -58,6 +59,7 @@
           Get Estimate
         </button>
         <button class="button book-trip-btn"
+                disabled = disabled
                 type="button"
                 name="button"
                 aria-label="Submit trip request"
@@ -75,6 +77,9 @@
           <input id="traveler-input"
                  type="text"
           </input>
+          <div class="traveler-error">
+            <p></p>
+          </div>
           <button class="search-traveler-submit"
                   type="button"
                   name="button">Search
@@ -106,7 +111,7 @@
         </label>
         <input id="password-input"
                class="password-input"
-               type="text"
+               type="password"
         </input>
         <div class="error-message">
           <p></p>

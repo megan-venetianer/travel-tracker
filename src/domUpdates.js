@@ -11,6 +11,10 @@ const dom = {
     $(content).hide()
   },
 
+  removeElement: (elementId)  => {
+    $(elementId).remove()
+  },
+
   renderAgentDashboard: (travelAgent, tripData, destinationData) => {
     $('.welcome-msg').html(`<h2>Welcome, Agent!</h2>`);
     dom.renderAgentIncome(travelAgent, tripData, destinationData);
@@ -29,7 +33,6 @@ const dom = {
       let tripDestination = destinationData.find(destination => {
         return destination.id === trip.destinationID;
       })
-      console.log(tripDestination)
       let html = `<div class ="trip-request-cards" id=${trip.id}>
         <h4>${tripDestination.destination}</h4>
         <p>Departure Date: ${trip.date}</p>
@@ -179,7 +182,11 @@ const dom = {
     let searchedTraveler = travelerData.find(traveler => {
       return traveler.name === travelerName;
     })
-    return searchedTraveler;
+    if (searchedTraveler) {
+      return searchedTraveler;
+    } else {
+      $('.traveler-error').text('Traveler does not exist')
+    }
   },
 
   unhideContent: (content) => {

@@ -16,7 +16,12 @@ button {
   font-size: .6em;
 }
 
-.error-message {
+button:disabled {
+  background: $button-background;
+}
+
+.error-message,
+.traveler-error  {
   color: $red;
 }
 
