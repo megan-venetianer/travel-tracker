@@ -22,12 +22,10 @@
 
 .upcoming-trips {
   @include primary-trips-layout();
-  // margin-left: 5em;
 }
 
 .upcoming-trip-cards {
   width: 14em;
-
 }
 
 img {

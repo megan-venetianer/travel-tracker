@@ -1,4 +1,3 @@
-
 button {
   height: 1.8em;
   width: 7em;
@@ -20,7 +19,6 @@ button {
 .error-message {
   color: $red;
 }
-
 
 form {
   @include primary-trips-layout

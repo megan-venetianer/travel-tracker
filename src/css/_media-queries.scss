@@ -1,4 +1,4 @@
-// mobile
+// mobile screen
 
 @mixin main--sm {
   .main-page {
@@ -32,7 +32,6 @@
     padding-left: .5em;
   }
 }
-
 
 @media (max-width: 1300px) {
   @include main--sm();
