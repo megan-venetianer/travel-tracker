@@ -1,14 +1,5 @@
-.amount-spent {
-  display: flex;
-  align-items: right;
-  padding-left: 11em;
-}
-
 body {
-  // -webkit-font-smoothing: auto;
-  // background-color: $primary-bg-color;
   display: grid;
-  // font-family: $primary-font-family;
   grid-template-areas:
     'header header header header'
     'left middle middleRight right'
@@ -17,62 +8,8 @@ body {
   grid-template-rows: 1fr 1fr 1fr;
   background: url('../images/mountains-lake.jpg');
   background-size: cover;
-  // opacity: .7;
   height: 120vh;
-  margin: 0;
-  padding: 0;
-  font-family: 'Catamaran';
-}
-
-button {
-  height: 1.8em;
-  width: 7em;
-  font-size: .8em;
-  font-family: 'Catamaran';
-  background: #4B6247;
-  color: white;
-  border-radius: 10px;
-  &:hover {
-    background: #0F5672;
-  }
-}
-
-.destination-dropdown {
-  font-family: 'Catamaran';
-  font-size: .6em;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  font-size: 1.5em;
-  background: white;
-  height: 70%;
-  border: 3px solid black;
-  border-radius: 30px;
-  font-family: 'Catamaran';
-}
-
-h1 {
-  font-size: 2em;
-  align-content: left;
-}
-
-header {
-  grid-area: header;
-  margin-left: 2em;
-  display: flex;
-  // text-align: left;
-  // background: white;
-  // opacity: .7;
-}
-
-img {
-  height: 8em;
-  width: 14em;
-  border-radius: .5em;
+  font-family: $primary-font-family;
 }
 
 .icon {
@@ -81,27 +18,10 @@ img {
   padding: 1.5em 0em 1em .5em;
 }
 
-
-input {
-  font-size: 1em;
-  border: 2px solid black;
-  font-family: 'Catamaran';
-}
-
-label {
-  font-size: .8em;
-}
-
 .left-section {
   grid-area: left;
   width: 22em;
   margin: 0em 3em 0em 2em;
-}
-
-.login-form {
-  display: grid;
-  grid-area: middle;
-  width: 26em;
 }
 
 main {
@@ -111,110 +31,11 @@ main {
   'left middle middleRight right';
   height: 100vh;
   width: 100%;
-  opacity: .8;
-}
-
-.monetary-display {
-  padding-left: 7em;
+  opacity: .85;
 }
 
 p {
   font-size: .7em;
-}
-
-.past-trips {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 1.5em;
-  background: white;
-  height: 90vh;
-  border: 3px solid black;
-  border-radius: 30px;
-  width: 15em;
-  font-family: 'Catamaran';
-  overflow-y: scroll;
-  text-align: center;
-}
-
-.pending-trips {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 1.5em;
-  background: white;
-  height: 90vh;
-  border: 3px solid black;
-  border-radius: 30px;
-  width: 15em;
-  font-family: 'Catamaran';
-  overflow-y: scroll;
-  margin: 0em 1em 0em 1em;
-  text-align: center;
-}
-
-.agent-form {
-  padding-left: 5em;
-  margin-right: 1em;
-  width: 20em;
-}
-
-.todays-travelers {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 1.5em;
-  background: white;
-  height: 20vh;
-  border: 3px solid black;
-  border-radius: 30px;
-  width: 13em;
-  font-family: 'Catamaran';
-  overflow-y: scroll;
-  margin-top: 1em;
-  text-align: center;
-}
-
-.trip-requests-all {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 1.5em;
-  background: white;
-  height: 90vh;
-  border: 3px solid black;
-  border-radius: 30px;
-  width: 15em;
-  font-family: 'Catamaran';
-  overflow-y: scroll;
-  margin-right: 1em;
-  margin-left: 7em;
-  text-align: center;
-}
-
-.upcoming-trips {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 1.5em;
-  background: white;
-  height: 90vh;
-  border: 3px solid black;
-  border-radius: 30px;
-  width: 15em;
-  font-family: 'Catamaran';
-  overflow-y: scroll;
-  text-align: center;
-}
-
-.upcoming-trip-cards {
-  width: 14em;
-}
-
-.welcome-msg {
-  display: flex;
-  padding-left: 14.5em;
-  font-size: 1.5em;
 }
 
 .hidden {

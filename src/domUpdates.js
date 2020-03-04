@@ -148,7 +148,7 @@ const dom = {
   },
 
   renderTravelerDashboard: (username, traveler, tripData, destinationData) => {
-    $('.welcome-msg').html(`<h2>Welcome, ${username}!</h2>`);
+    $('.welcome-msg').html(`<h3>Welcome, ${username}!</h3>`);
     dom.renderUpcomingTrips(traveler, tripData, destinationData);
     dom.renderPastTrips(traveler,tripData, destinationData);
     dom.renderDestinationDropDown(destinationData);

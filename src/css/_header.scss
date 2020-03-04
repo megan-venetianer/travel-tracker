@@ -1,3 +1,22 @@
+h1 {
+  font-size: 2em;
+  align-content: left;
+}
 
+header {
+  grid-area: header;
+  margin-left: 2em;
+  display: flex;
+}
+
+.monetary-display {
+  padding-left: 7em;
+}
+
+.welcome-msg {
+  display: flex;
+  padding-left: 14.5em;
+  font-size: 1.5em;
+}
 
 //

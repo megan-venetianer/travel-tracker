@@ -1,0 +1,58 @@
+button {
+  height: 1.8em;
+  width: 7em;
+  font-size: .8em;
+  font-family: $primary-font-family;
+  background: $button-background;
+  color: $white;
+  border-radius: 10px;
+  &:hover {
+    background: $button-hover;
+  }
+}
+
+.destination-dropdown {
+  font-family: $primary-font-family;
+  font-size: .6em;
+}
+
+.error-message {
+  color: $red;
+}
+
+form {
+  @include primary-trips-layout
+  height: 70%;
+
+  justify-content: space-around;
+}
+
+input {
+  @include primary-border();
+  font-size: 1em;
+  font-family: $primary-font-family;
+}
+
+label {
+  font-size: .8em;
+}
+
+.login-form {
+  display: grid;
+  grid-area: middle;
+  width: 26em;
+}
+
+.agent-form {
+  padding-left: 5em;
+  margin-right: 9em;
+  width: 13em;
+}
+
+#agent-search {
+  width: 13em;
+  height: 60vh;
+  & label {
+    font-size: 1em;
+  }
+}

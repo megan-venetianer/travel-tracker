@@ -1,0 +1,39 @@
+.past-trips {
+  @include primary-trips-layout();
+}
+
+.pending-trips {
+  @include primary-trips-layout();
+  margin: 0em 1em 0em 1em;
+}
+
+.todays-travelers {
+  @include primary-trips-layout();
+  margin-top: 1em;
+  width: 13em;
+  height: 20vh;
+}
+
+.trip-requests-all {
+  @include primary-trips-layout();
+  margin-right: 1em;
+  margin-left: 7em;
+}
+
+.upcoming-trips {
+  @include primary-trips-layout();
+}
+
+.upcoming-trip-cards {
+  width: 14em;
+}
+
+img {
+  height: 8em;
+  width: 14em;
+  border-radius: .5em;
+}
+
+.upcoming-trip-cards {
+  width: 14em;
+}
