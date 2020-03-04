@@ -35,3 +35,10 @@ The purpose of this project was to create an application to manage and track dif
 2. Change into the directory
 3. Install dependencies via `npm install`
 4. Start webpack-dev-server via `npm run start`
+5. Login instructions:
+  As a traveler:
+  username: traveler50 (where 50 is the ID of the user)
+  password: travel2020
+  As an agent:
+  username: agency
+  password: travel2020
