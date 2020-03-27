@@ -12,8 +12,7 @@ The purpose of this project was to create an application to manage and track dif
 5. Utilizing SASS to write DRY and modular CSS.
 6. Testing via Mocha and Chai, including using Spies to spy on method calls to APIs not available in a node environment.
 7. Practicing a remote GitHub workflow including code reviews and project management practices.
-8. Utilizing SASS to write DRY and modular CSS.
-9. Testing via Mocha and Chai, including using Spies to spy on method calls to APIs not available in a node environment.
+8. Testing via Mocha and Chai, including using Spies to spy on method calls to APIs not available in a node environment.
 
 ### 2. Technology
 
